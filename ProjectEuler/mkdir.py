@@ -1,4 +1,4 @@
 #!/usr/bin/python
 import os
-path='25_1000-digit Fibonacci number'
+path='15_Lattice paths'
 os.mkdir(path)
