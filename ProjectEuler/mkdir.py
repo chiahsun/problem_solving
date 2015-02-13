@@ -1,4 +1,4 @@
 #!/usr/bin/python
 import os
-path='21_Amicable numbers'
+path='25_1000-digit Fibonacci number'
 os.mkdir(path)
