@@ -1,12 +1,4 @@
-def factorial(number):
-    res = 1;
-    for i in range(number, 1, -1):
-        res *= i;
-    return res;
-
-# print(factorial(2));
-# print(factorial(3));
-# print(factorial(10));
+from math import factorial;
 
 def get_factorial_sequence(lst, nth):
     seq = [];
