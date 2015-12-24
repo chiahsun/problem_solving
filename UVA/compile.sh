@@ -10,5 +10,5 @@ else
     a=$1
     name=${a%%.*}
     echo "[Compile] $name.cc -> $name.out"
-    g++ $name.cc -o $name.out
+    g++ -std=c++11 $name.cc -o $name.out
 fi
