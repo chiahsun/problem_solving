@@ -1,0 +1,10 @@
+[solve1.cc]
+16644451    1564    Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.149   24 mins ago
+
+[solve2.cc]
+16644578    210 Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.059   45 secs ago
+
+[solve3.cc]
+16644575    209 Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.059   1 mins ago
+
+solve1.cc would be slower since it would find mid if exists not decrement one by one would slower the speed.
