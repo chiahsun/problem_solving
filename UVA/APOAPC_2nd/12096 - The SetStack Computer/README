@@ -1,0 +1,9 @@
+[solve1.cc]
+16646882    19  Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.086
+
+Improvement
+1. For map<id, set>, use vector<set> instead
+2. Use STL
+   set_intersection and set_union to reduce code size
+3. Not to use class to reduce code size
+   
