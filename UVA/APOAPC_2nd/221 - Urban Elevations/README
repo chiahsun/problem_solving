@@ -1,0 +1,10 @@
+[solve1.cc]
+16660465    48  Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.006   11 mins ago
+[solve2.cc]
+16660543    23  Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.003   1 mins ago
+
+I misunderstand the printing order for the problem in the first place.
+
+See data6.in for details.
+
+There is no need to judge if the depth or height or width <= 0 
