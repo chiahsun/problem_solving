@@ -18,3 +18,30 @@
 [6] 0.009
 [7] 0.012
 [11] 0.016
+
+
+[Claim]
+For a size M x N chocolate, there exists an optimal method to split it into M x N unit size chcolates and the dividing cost = M * N - 1.
+
+[Proof]
+We prove it by the following two proofs.
+ (1) Lower bound: M * N - 1 = SZ - 1
+ (2) Existence of the method for deriving the lower bound
+
+[Proof for (1)]
+ For any chocolate of size C = A + B, if we divide it into two parts of size A and B, then the 
+    cost = cost(A) + cost(B) + 1 = C - 1
+ (i) Base case: 1 x 1 chocolate
+     the cost = 0 = 1 * 1 - 1
+ (ii) For any two chocolate that has optimal cost A = (a x b) and B = (a x c) no matter a, b, c, as long as a equals one size and b+c equals another side
+     the optimal cost for the combination of the two C = a x (b + c)
+     the cost = a * b - 1 + a * c - 1 + 1
+              = a * (b + c) - 1
+
+[Proof for (2)]
+ Consider a dividing method on M x N chocholate.
+ Split it into N  M x 1 chocholate (cost = N-1)
+ Split each Mx1 chocholate into 1x1 chocolate (cost = N*(M-1))
+ The cost = N-1+N*(M-1) = N*M-1
+
+By (1)(2) that concludes the proof.
