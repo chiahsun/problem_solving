@@ -10,7 +10,6 @@
 #include <algorithm>
 
 const bool debug = false;
-// const bool debug = true;
 
 char buf[100];
 char buf1[100];
@@ -96,7 +95,6 @@ const std::vector<ArticleId> & getArticlesFromString(const std::string & vocab, 
 int main() {
     int nArticle;
     scanf("%d\n", &nArticle);
-//    printf("nArticle = %d\n", nArticle);
 
     std::vector<Article> vecArticle;
     while (nArticle--) {
@@ -111,24 +109,7 @@ int main() {
                 break;
             article.push_back(line);
         } while (true);
-#if 0
-        do {
-            char c = getchar();
-            if (c == '\n') {
-                article.push_back("\n");
-            } else {
-                ungetc(c, stdin);
-                scanf("%[^\n]\n", buf);
-                // printf("nArg: %d, buf:(%s)\n", nArg, buf);
-                if (!strncmp(buf, "**********", 10)) {
-                    break;
-                }
-                article.push_back(std::string(buf) + '\n');
-                if (debug)
-                    printf("buf: %s", buf);
-            }
-        } while (1);
-#endif
+        
         vecArticle.push_back(article);
     }
 
@@ -154,23 +135,7 @@ int main() {
 
                     
             }
-#if 0
-            ss.clear();
-            ss << line;
-            while (ss >> s) {
-                std::string s2 = tolower_string(get_alpha_num_string(s));
-                if (not s2.empty()) {
-                    if (debug)
-                        printf("%s (%d : %d)\n", s2.c_str(), posArticle, posLine);
-                    if (not mapStringAndStringId.count(s2)) {
-                        vecBucket.push_back(Bucket(s2));
-                        mapStringAndStringId.insert(std::make_pair(s2, mapStringAndStringId.size()));
-                    }
-                    StringId s2Id = mapStringAndStringId[s2];
-                    vecBucket[s2Id].addEntry(posArticle, posLine);
-                }
-            }
-#endif
+        
         }
     }
     
