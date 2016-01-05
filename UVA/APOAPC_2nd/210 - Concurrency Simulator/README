@@ -1,0 +1,19 @@
+# Runtime
+
+[solve1.cc]
+16672691    71  Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.133
+[solve2.cc]
+16672911    67  Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.109
+
+[1] 0.028
+[2] 0.032
+[7] 0.033
+...
+[50] 0.078
+
+If you have problems with WA, check data11.in and data4.in.
+
+Note: 
+  (1) Multiple cases should be dealt.
+  (2) A blank line to split different cases.
+  (3) Be sure that you can read in the next configs (7 parameters)
