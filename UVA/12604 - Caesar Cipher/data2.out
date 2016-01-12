@@ -1,0 +1,10 @@
+ambiguous: 1 2
+unique: 13
+ambiguous: 5 16 28 30 38
+ambiguous: 1 2
+no solution
+no solution
+no solution
+ambiguous: 10 21
+ambiguous: 10 11 14 22 25 28 31 32 35
+no solution
