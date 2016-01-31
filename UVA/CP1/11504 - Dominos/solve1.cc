@@ -19,7 +19,7 @@ int find_scc(int cur, std::stack<int> & parents) {
     int cur_pos = in_stack[cur] = parents.size();
     parents.push(cur);
 
-    int top_parent_pos = NOT_IN_STACK;
+    int top_parent_pos = cur_pos;
     for (auto next : edges[cur]) {
         int pos_in_stack;
         if (not visited[next]) {
