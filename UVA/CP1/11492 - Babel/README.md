@@ -3,7 +3,7 @@
 [solve1.cc]
 16785489    49  Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.133
 
-[solve2.cc] (Use custom hash map)
+[solve2.cc] Use custom hash map
 16785546    9   Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.069
 
 
