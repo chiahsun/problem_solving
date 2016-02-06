@@ -3,6 +3,17 @@
 [solve1.cc]
 1867    Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.063
 
+[solve2.cc]
+3134    Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.153
+
+
+[1] 0.000
+[2] 0.003
+[4] 0.006
+[39] 0.009
+[42] 0.009
+
+
 # Tag
 
 * dynamic programming
@@ -67,15 +78,17 @@ Define the function
    best_val_before[n_object_considered][weight_allowed]
 ```
 
-which means **if we considred object 1 ... object n (size: n_object_considred), under the allowed weight (weight_allowed), the best value we can get.**
+which means **if we considered object 1 ... object n (size: n_object_considred), under the allowed weight (weight_allowed), the best value we can get.**
 
 then it can be defined recursively
 
 ```
+1. // When object[n_object_considered].weight > weight_allowed
    best_val_before[n_object_considered][weight_allowed]
- = max( best_val_before[n_object_considered-1][weight_allowed]
-      , (object[n_object_considered].weight <= weight_allowed) ? object[n_object_considered].value + best_val_before[n_object_considered][weight_allowed-object[n_object_considered].weight]
-                                                               : best_val_before[n_object_considered][weight_allowed]
+ = best_val_before[n_object_considered-1][weight_allowed] 
+2. // When object[n_object_considered].weight <= weight_allowed
+   best_val_before[n_object_considered][weight_allowed]
+ = max(object[n_object_considered].value + best_val_before[n_object_considered][weight_allowed-object[n_object_considered].weight],  best_val_before[n_object_considered][weight_allowed])
 ```
 
 which means

@@ -49,16 +49,18 @@ int main() {
             if (debug)
                 print_table(nObject, max_weight);
             for (int i = 1; i < nObject; ++i) {
+                int cur_weight = object[i].weight();
+                int cur_value = object[i].value();
                 for (int k = 1; k < max_weight; ++k) {
-                    int cur_weight = object[i].weight();
-                    int cur_value = object[i].value();
                     if (cur_weight > k)
                         A[i][k] = A[i-1][k];
                     else
                         A[i][k] = std::max(A[i-1][k], cur_value + A[i-1][k-cur_weight]);
                 }
-                if (debug)
-                    print_table(nObject, max_weight);
+            }
+            if (debug) {
+                print_table(nObject, max_weight);
+                printf("  cur max : %d\n", A[nObject-1][max_weight-1]);
             }
             total_value += A[nObject-1][max_weight-1];
         }
