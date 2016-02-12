@@ -8,3 +8,34 @@
 
 * dynamic programming
     * longest increasing subsequence
+
+
+
+## Comment
+
+There may be some problem in the judge or I misunderstand the problem.
+
+```
+1
+4 4
+1 5 9 8
+7 5 8 6
+```
+
+Some AC problem outputs
+
+```
+4
+```
+
+But shouldn't AC be
+
+```
+5
+```
+
+that stands for
+
+```
+1 5 7 8 9
+```

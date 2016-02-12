@@ -2,10 +2,12 @@
 #include <vector>
 #include <algorithm>
 
+const bool debug = !true;
 const int M = 100+5;
 int A[M], B[M];
 
 int merge_list(const std::vector<int> & v1, int sz1, const std::vector<int> & v2, int sz2) {
+    std::vector<int> v;
     int size = 0, last = -(1 << 29);
     for (int pos1 = 0, pos2 = 0; pos1 < sz1 or pos2 < sz2;) {
         int cur;
@@ -17,7 +19,16 @@ int merge_list(const std::vector<int> & v1, int sz1, const std::vector<int> & v2
         if (cur != last) {
             ++size;
             last = cur;
+            if (debug) {
+                v.push_back(cur);
+            }
         }
+    }
+    if (debug) {
+        printf("lis : ");
+        for (auto x : v)
+            printf("%d ", x);
+        printf("\n");
     }
 
     return size;
