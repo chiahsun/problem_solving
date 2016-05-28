@@ -12,7 +12,7 @@ Your runtime beats 85.58% of cppsubmissions.
 O(n * ln(n))
 
 
-#### solve1.py
+#### solve1.py (use bisect)
 
 16 / 16 test cases passed.
 Status: Accepted
@@ -21,3 +21,13 @@ Runtime: 60 ms
 Your runtime beats 39.88% of pythonsubmissions.
 
 1. Litter hard to use bisect_left
+
+
+#### solve2.py (use dict for second element lookup)
+
+16 / 16 test cases passed.
+Status: Accepted
+Runtime: 92 ms
+
+Your runtime beats 34.71% of pythonsubmissions.
+
