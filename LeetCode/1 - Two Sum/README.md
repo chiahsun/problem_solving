@@ -31,3 +31,24 @@ Runtime: 92 ms
 
 Your runtime beats 34.71% of pythonsubmissions.
 
+
+#### solve1.js
+
+19 / 19 test cases passed.
+Status: Accepted
+Runtime: 199 ms
+
+Your runtime beats 46.27% of javascript submissions.
+
+#### solve2.js (use dict)
+
+19 / 19 test cases passed.
+Status: Accepted
+Runtime: 85 ms
+
+Your runtime beats 97.57% of javascript submissions.
+
+##### Reference
+
+https://skyyen999.gitbooks.io/-leetcode-with-javascript/content/questions/1md.html
+
