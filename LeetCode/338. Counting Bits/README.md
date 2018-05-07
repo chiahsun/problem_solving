@@ -1,3 +1,24 @@
+# solve1.py
+
+Remove highest bit
+
+15 / 15 test cases passed.
+Status: Accepted
+Runtime: 112 ms
+
+Your runtime beats 93.13 % of python3 submissions.
+
+# solve2.py
+
+Improvement over 1
+
+15 / 15 test cases passed.
+Status: Accepted
+Runtime: 112 ms
+
+Your runtime beats 93.13 % of python3 submissions.
+
+
 # solve1.js
 
 
