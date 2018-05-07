@@ -1,0 +1,1 @@
+Try to use 1-dimension and directly get the state transfer function of the problem. See [reference solution](http://bookshadow.com/weblog/2017/10/22/leetcode-minimum-ascii-delete-sum-for-two-strings/)
