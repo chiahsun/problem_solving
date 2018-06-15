@@ -1,0 +1,1 @@
+Use golang [string.Fields](https://golang.org/pkg/strings/#Fields) [Ref](https://github.com/aQuaYi/LeetCode-in-Go/blob/master/Algorithms/0434.number-of-segments-in-a-string/number-of-segments-in-a-string.go) [The source code](https://github.com/golang/go/blob/master/src/strings/strings.go)
