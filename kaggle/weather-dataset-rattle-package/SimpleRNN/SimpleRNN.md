@@ -1027,6 +1027,11 @@ len(train), len(valid), len(test)
 
 
 ```python
+
+```
+
+
+```python
 train.shape
 ```
 
@@ -1771,7 +1776,7 @@ test.head()
 ```python
 target_feature = 'Temp3pm'
 target_feature_pos = train.columns.get_loc(target_feature)
-
+train_ori = train
 import seaborn as sns
 
 _ = sns.lineplot(data = train, x = train.index, y = target_feature)
@@ -1779,7 +1784,7 @@ _ = sns.lineplot(data = train, x = train.index, y = target_feature)
 
 
     
-![png](output_21_0.png)
+![png](output_22_0.png)
     
 
 
@@ -1791,9 +1796,32 @@ _ = sns.lineplot(data = train[:end], x = train[:end].index, y = target_feature)
 
 
     
-![png](output_22_0.png)
+![png](output_23_0.png)
     
 
+
+
+```python
+# Normalization
+
+normalize = True #False
+
+if normalize:
+    train_mean = train.mean()
+    train_std = train.std()
+    
+    target_feature_bak = train.iloc[:,target_feature_pos]
+    train = (train - train_mean)/train_std
+    train.iloc[:,target_feature_pos] = target_feature_bak
+    
+    target_feature_bak = valid.iloc[:,target_feature_pos]
+    valid = (valid - train_mean)/train_std
+    valid.iloc[:,target_feature_pos] = target_feature_bak
+    
+    target_feature_bak = test.iloc[:,target_feature_pos]
+    test = (test - train_mean)/train_std
+    test.iloc[:,target_feature_pos] = target_feature_bak
+```
 
 
 ```python
@@ -1812,8 +1840,7 @@ for val in dataset:
 
 
 ```python
-AA = train #.to_numpy()
-## AA[0:2]
+AA = train
 
 dataset = tf.data.Dataset.from_tensor_slices(AA)
 for val in dataset:
@@ -1824,9 +1851,10 @@ for val in dataset:
 
     <class 'tensorflow.python.framework.ops.EagerTensor'>
     tf.Tensor(
-    [2.0000e+01 3.3100e+01 0.0000e+00 4.4000e+00 1.1000e+01 4.1000e+01
-     1.3000e+01 1.7000e+01 8.1000e+01 3.2000e+01 1.0160e+03 1.0121e+03
-     1.0000e+00 2.0000e+00 2.5400e+01 3.2300e+01], shape=(16,), dtype=float64)
+    [-9.48438695e-01  3.89286121e-01 -3.62135041e-01 -1.08013904e+00
+      7.73839691e-01  3.10191624e-02 -3.75547036e-01 -6.81225364e-01
+      8.52457015e-01 -1.00950940e+00  1.23424853e+00  1.30260234e+00
+     -1.33378144e+00 -9.18630055e-01 -5.42952618e-01  3.23000000e+01], shape=(16,), dtype=float64)
 
 
 
@@ -1891,7 +1919,7 @@ keras.backend.clear_session()
 tf.random.set_seed(1)
 np.random.seed(1)
 
-WINDOW_SIZE = 7
+WINDOW_SIZE = 30
 train_window_dataset = window_dataset(train, WINDOW_SIZE)
 valid_window_dataset = window_dataset(valid, WINDOW_SIZE)
 
@@ -1916,23 +1944,21 @@ model = keras.models.Sequential([
     keras.layers.SimpleRNN(100, return_sequences = True, input_shape = [None, input_shape]),
     keras.layers.SimpleRNN(100),
     keras.layers.Dense(1),
-    keras.layers.Lambda(lambda x: x * 40.0),
+#    keras.layers.Lambda(lambda x: x * 40.0),
 ])
 
 model.summary()
 ```
 
-    Model: "sequential_2"
+    Model: "sequential"
     _________________________________________________________________
     Layer (type)                 Output Shape              Param #   
     =================================================================
-    simple_rnn_3 (SimpleRNN)     (None, None, 100)         11700     
+    simple_rnn (SimpleRNN)       (None, None, 100)         11700     
     _________________________________________________________________
-    simple_rnn_4 (SimpleRNN)     (None, 100)               20100     
+    simple_rnn_1 (SimpleRNN)     (None, 100)               20100     
     _________________________________________________________________
-    dense_2 (Dense)              (None, 1)                 101       
-    _________________________________________________________________
-    lambda (Lambda)              (None, 1)                 0         
+    dense (Dense)                (None, 1)                 101       
     =================================================================
     Total params: 31,901
     Trainable params: 31,901
@@ -1948,7 +1974,7 @@ model.compile(
     metrics = ['mae'],
 )
 
-early_stopping = keras.callbacks.EarlyStopping(patience = 50, restore_best_weights = True)
+early_stopping = keras.callbacks.EarlyStopping(patience = 10, restore_best_weights = True)
 history = model.fit(
     train_window_dataset,
     epochs = 500,
@@ -1959,168 +1985,91 @@ history = model.fit(
 ```
 
     Epoch 1/500
-    67/67 [==============================] - 1s 6ms/step - loss: 2.2479 - mae: 2.6961 - val_loss: 1.2324 - val_mae: 1.6567
+    67/67 [==============================] - 2s 12ms/step - loss: 17.2225 - mae: 17.7225 - val_loss: 12.3663 - val_mae: 12.8663
     Epoch 2/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.2623 - mae: 1.6957 - val_loss: 1.0901 - val_mae: 1.5118
+    67/67 [==============================] - 1s 9ms/step - loss: 8.3671 - mae: 8.8663 - val_loss: 5.3300 - val_mae: 5.8252
     Epoch 3/500
-    67/67 [==============================] - 0s 3ms/step - loss: 1.1436 - mae: 1.5738 - val_loss: 1.2780 - val_mae: 1.7240
+    67/67 [==============================] - 1s 9ms/step - loss: 2.4231 - mae: 2.8941 - val_loss: 1.2680 - val_mae: 1.7145
     Epoch 4/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1980 - mae: 1.6328 - val_loss: 1.1866 - val_mae: 1.6271
+    67/67 [==============================] - 1s 9ms/step - loss: 1.1415 - mae: 1.5771 - val_loss: 1.1592 - val_mae: 1.5882
     Epoch 5/500
-    67/67 [==============================] - 0s 3ms/step - loss: 1.2214 - mae: 1.6516 - val_loss: 1.2070 - val_mae: 1.6464
+    67/67 [==============================] - 1s 9ms/step - loss: 1.1426 - mae: 1.5779 - val_loss: 1.1530 - val_mae: 1.5809
     Epoch 6/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.2588 - mae: 1.6920 - val_loss: 1.1969 - val_mae: 1.6351
+    67/67 [==============================] - 1s 9ms/step - loss: 1.1406 - mae: 1.5769 - val_loss: 1.1495 - val_mae: 1.5765
     Epoch 7/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.2766 - mae: 1.7123 - val_loss: 1.1259 - val_mae: 1.5584
+    67/67 [==============================] - 1s 9ms/step - loss: 1.1429 - mae: 1.5776 - val_loss: 1.1549 - val_mae: 1.5831
     Epoch 8/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.2488 - mae: 1.6824 - val_loss: 1.1019 - val_mae: 1.5357
+    67/67 [==============================] - 1s 9ms/step - loss: 1.1419 - mae: 1.5759 - val_loss: 1.1682 - val_mae: 1.5995
     Epoch 9/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.2582 - mae: 1.6905 - val_loss: 1.1325 - val_mae: 1.5642
+    67/67 [==============================] - 1s 9ms/step - loss: 1.1263 - mae: 1.5605 - val_loss: 1.1065 - val_mae: 1.5391
     Epoch 10/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1458 - mae: 1.5734 - val_loss: 1.0804 - val_mae: 1.5013
+    67/67 [==============================] - 1s 9ms/step - loss: 0.9151 - mae: 1.3264 - val_loss: 0.8823 - val_mae: 1.2970
     Epoch 11/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0952 - mae: 1.5191 - val_loss: 1.4658 - val_mae: 1.9246
+    67/67 [==============================] - 1s 9ms/step - loss: 0.8203 - mae: 1.2204 - val_loss: 0.8390 - val_mae: 1.2515
     Epoch 12/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1950 - mae: 1.6235 - val_loss: 1.2516 - val_mae: 1.6938
+    67/67 [==============================] - 1s 14ms/step - loss: 0.7929 - mae: 1.1892 - val_loss: 0.8267 - val_mae: 1.2345
     Epoch 13/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1176 - mae: 1.5488 - val_loss: 1.0797 - val_mae: 1.5085
+    67/67 [==============================] - 1s 9ms/step - loss: 0.8094 - mae: 1.2070 - val_loss: 0.8300 - val_mae: 1.2407
     Epoch 14/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1982 - mae: 1.6321 - val_loss: 1.1720 - val_mae: 1.6048
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7993 - mae: 1.1990 - val_loss: 0.8180 - val_mae: 1.2258
     Epoch 15/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1249 - mae: 1.5510 - val_loss: 1.3041 - val_mae: 1.7253
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7593 - mae: 1.1529 - val_loss: 0.8166 - val_mae: 1.2247
     Epoch 16/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.2155 - mae: 1.6472 - val_loss: 1.2368 - val_mae: 1.6789
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7900 - mae: 1.1916 - val_loss: 0.8220 - val_mae: 1.2307
     Epoch 17/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1200 - mae: 1.5444 - val_loss: 1.0968 - val_mae: 1.5222
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7655 - mae: 1.1590 - val_loss: 0.8162 - val_mae: 1.2229
     Epoch 18/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1388 - mae: 1.5654 - val_loss: 1.4452 - val_mae: 1.9038
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7513 - mae: 1.1439 - val_loss: 0.8126 - val_mae: 1.2174
     Epoch 19/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1482 - mae: 1.5742 - val_loss: 1.0640 - val_mae: 1.4901
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7562 - mae: 1.1509 - val_loss: 0.8068 - val_mae: 1.2118
     Epoch 20/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1653 - mae: 1.5919 - val_loss: 1.2842 - val_mae: 1.7301
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7461 - mae: 1.1386 - val_loss: 0.8033 - val_mae: 1.2116
     Epoch 21/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0779 - mae: 1.4993 - val_loss: 1.3881 - val_mae: 1.8407
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7480 - mae: 1.1400 - val_loss: 0.8137 - val_mae: 1.2200
     Epoch 22/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1452 - mae: 1.5722 - val_loss: 1.2625 - val_mae: 1.7041
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7278 - mae: 1.1208 - val_loss: 0.8047 - val_mae: 1.2082
     Epoch 23/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1120 - mae: 1.5381 - val_loss: 1.1680 - val_mae: 1.5985
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7323 - mae: 1.1213 - val_loss: 0.8304 - val_mae: 1.2301
     Epoch 24/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1492 - mae: 1.5768 - val_loss: 1.2389 - val_mae: 1.6772
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7539 - mae: 1.1498 - val_loss: 0.8216 - val_mae: 1.2233
     Epoch 25/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0874 - mae: 1.5144 - val_loss: 1.0938 - val_mae: 1.5199
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7285 - mae: 1.1205 - val_loss: 0.8022 - val_mae: 1.2086
     Epoch 26/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0654 - mae: 1.4872 - val_loss: 1.1949 - val_mae: 1.6268
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7176 - mae: 1.1037 - val_loss: 0.8283 - val_mae: 1.2333
     Epoch 27/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0751 - mae: 1.4994 - val_loss: 1.2332 - val_mae: 1.6752
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7137 - mae: 1.1065 - val_loss: 0.8155 - val_mae: 1.2183
     Epoch 28/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0909 - mae: 1.5176 - val_loss: 1.1458 - val_mae: 1.5755
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7040 - mae: 1.0945 - val_loss: 0.8586 - val_mae: 1.2666
     Epoch 29/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1346 - mae: 1.5666 - val_loss: 1.0734 - val_mae: 1.4977
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7106 - mae: 1.0980 - val_loss: 0.8184 - val_mae: 1.2271
     Epoch 30/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1934 - mae: 1.6236 - val_loss: 1.1797 - val_mae: 1.6176
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7108 - mae: 1.1025 - val_loss: 0.8114 - val_mae: 1.2149
     Epoch 31/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1219 - mae: 1.5471 - val_loss: 1.0921 - val_mae: 1.5111
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6777 - mae: 1.0606 - val_loss: 0.8038 - val_mae: 1.2049
     Epoch 32/500
-    67/67 [==============================] - 1s 9ms/step - loss: 1.1036 - mae: 1.5211 - val_loss: 1.7133 - val_mae: 2.1814
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6790 - mae: 1.0660 - val_loss: 0.8280 - val_mae: 1.2332
     Epoch 33/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0743 - mae: 1.4964 - val_loss: 1.8334 - val_mae: 2.3073
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6641 - mae: 1.0480 - val_loss: 0.8021 - val_mae: 1.2045
     Epoch 34/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1085 - mae: 1.5345 - val_loss: 1.0539 - val_mae: 1.4792
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6824 - mae: 1.0682 - val_loss: 0.8905 - val_mae: 1.3005
     Epoch 35/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0872 - mae: 1.5059 - val_loss: 1.3986 - val_mae: 1.8524
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6903 - mae: 1.0765 - val_loss: 0.8191 - val_mae: 1.2222
     Epoch 36/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0760 - mae: 1.5024 - val_loss: 1.0534 - val_mae: 1.4756
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6542 - mae: 1.0377 - val_loss: 0.8466 - val_mae: 1.2591
     Epoch 37/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.2158 - mae: 1.6525 - val_loss: 1.1087 - val_mae: 1.5323
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6563 - mae: 1.0386 - val_loss: 0.8164 - val_mae: 1.2178
     Epoch 38/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1644 - mae: 1.5968 - val_loss: 1.0911 - val_mae: 1.5155
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7364 - mae: 1.1252 - val_loss: 0.8485 - val_mae: 1.2601
     Epoch 39/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1124 - mae: 1.5343 - val_loss: 1.0960 - val_mae: 1.5191
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7204 - mae: 1.1085 - val_loss: 0.8353 - val_mae: 1.2420
     Epoch 40/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1097 - mae: 1.5378 - val_loss: 1.1607 - val_mae: 1.5906
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6511 - mae: 1.0349 - val_loss: 0.8861 - val_mae: 1.2977
     Epoch 41/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1992 - mae: 1.6309 - val_loss: 1.0685 - val_mae: 1.4923
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6337 - mae: 1.0110 - val_loss: 0.8256 - val_mae: 1.2259
     Epoch 42/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1623 - mae: 1.5902 - val_loss: 1.0674 - val_mae: 1.4910
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6313 - mae: 1.0070 - val_loss: 0.8025 - val_mae: 1.1996
     Epoch 43/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1219 - mae: 1.5422 - val_loss: 1.3348 - val_mae: 1.7815
-    Epoch 44/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.1155 - mae: 1.5329 - val_loss: 1.0625 - val_mae: 1.4874
-    Epoch 45/500
-    67/67 [==============================] - 0s 4ms/step - loss: 1.0587 - mae: 1.4777 - val_loss: 1.0967 - val_mae: 1.5162
-    Epoch 46/500
-     1/67 [..............................] - ETA: 3s - loss: 1.7452 - mae: 2.1839
-
-
-    ---------------------------------------------------------------------------
-
-    KeyboardInterrupt                         Traceback (most recent call last)
-
-    <ipython-input-223-ffcedac78c7f> in <module>
-          6 
-          7 early_stopping = keras.callbacks.EarlyStopping(patience = 50, restore_best_weights = True)
-    ----> 8 history = model.fit(
-          9     train_window_dataset,
-         10     epochs = 500,
-
-
-    /usr/local/Cellar/jupyterlab/3.0.16_1/libexec/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py in fit(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq, max_queue_size, workers, use_multiprocessing)
-       1181                 _r=1):
-       1182               callbacks.on_train_batch_begin(step)
-    -> 1183               tmp_logs = self.train_function(iterator)
-       1184               if data_handler.should_sync:
-       1185                 context.async_wait()
-
-
-    /usr/local/Cellar/jupyterlab/3.0.16_1/libexec/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py in __call__(self, *args, **kwds)
-        887 
-        888       with OptionalXlaContext(self._jit_compile):
-    --> 889         result = self._call(*args, **kwds)
-        890 
-        891       new_tracing_count = self.experimental_get_tracing_count()
-
-
-    /usr/local/Cellar/jupyterlab/3.0.16_1/libexec/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py in _call(self, *args, **kwds)
-        915       # In this case we have created variables on the first call, so we run the
-        916       # defunned version which is guaranteed to never create variables.
-    --> 917       return self._stateless_fn(*args, **kwds)  # pylint: disable=not-callable
-        918     elif self._stateful_fn is not None:
-        919       # Release the lock early so that multiple threads can perform the call
-
-
-    /usr/local/Cellar/jupyterlab/3.0.16_1/libexec/lib/python3.9/site-packages/tensorflow/python/eager/function.py in __call__(self, *args, **kwargs)
-       3021       (graph_function,
-       3022        filtered_flat_args) = self._maybe_define_function(args, kwargs)
-    -> 3023     return graph_function._call_flat(
-       3024         filtered_flat_args, captured_inputs=graph_function.captured_inputs)  # pylint: disable=protected-access
-       3025 
-
-
-    /usr/local/Cellar/jupyterlab/3.0.16_1/libexec/lib/python3.9/site-packages/tensorflow/python/eager/function.py in _call_flat(self, args, captured_inputs, cancellation_manager)
-       1958         and executing_eagerly):
-       1959       # No tape is watching; skip to running the function.
-    -> 1960       return self._build_call_outputs(self._inference_function.call(
-       1961           ctx, args, cancellation_manager=cancellation_manager))
-       1962     forward_backward = self._select_forward_and_backward_functions(
-
-
-    /usr/local/Cellar/jupyterlab/3.0.16_1/libexec/lib/python3.9/site-packages/tensorflow/python/eager/function.py in call(self, ctx, args, cancellation_manager)
-        589       with _InterpolateFunctionError(self):
-        590         if cancellation_manager is None:
-    --> 591           outputs = execute.execute(
-        592               str(self.signature.name),
-        593               num_outputs=self._num_outputs,
-
-
-    /usr/local/Cellar/jupyterlab/3.0.16_1/libexec/lib/python3.9/site-packages/tensorflow/python/eager/execute.py in quick_execute(op_name, num_outputs, inputs, attrs, ctx, name)
-         57   try:
-         58     ctx.ensure_initialized()
-    ---> 59     tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
-         60                                         inputs, attrs, num_outputs)
-         61   except core._NotOkStatusException as e:
-
-
-    KeyboardInterrupt: 
+    67/67 [==============================] - 1s 9ms/step - loss: 0.6255 - mae: 1.0030 - val_loss: 0.8213 - val_mae: 1.2245
 
 
 
@@ -2143,7 +2092,7 @@ _ = sns.lineplot(data = train[:end], x = train[:end].index, y = target_feature)
 
 
     
-![png](output_31_0.png)
+![png](output_33_0.png)
     
 
 
@@ -2154,53 +2103,63 @@ print(predicted_train.shape)
 ```
 
     (2143, 16)
-    (2137, 1)
+    (2114, 1)
 
 
 
 ```python
 predicted = predicted_train[:, 0]
-predicted[:5]
+predicted[:20]
 ```
 
 
 
 
-    array([30.917831, 30.42372 , 29.944696, 30.042906, 30.082285],
-          dtype=float32)
+    array([28.114145, 29.554737, 31.01006 , 31.118515, 31.4     , 31.442154,
+           31.036327, 30.168304, 30.393904, 31.02163 , 30.117813, 31.002937,
+           31.188951, 30.998537, 31.554445, 30.705988, 29.766802, 29.981245,
+           30.77669 , 31.088257], dtype=float32)
 
 
 
 
 ```python
-sns.lineplot(x = range(len(predicted)), y = predicted)
+toplot = predicted[:150]
+AA = pd.DataFrame({'x': range(len(toplot)), 'y': toplot})
+sns.lineplot(data = AA, x = 'x', y = 'y')
+# sns.lineplot(x = range(len(toplot)), y = toplot)
+# predicted[10:35]
 ```
 
 
 
 
-    <AxesSubplot:>
+    <AxesSubplot:xlabel='x', ylabel='y'>
 
 
 
 
     
-![png](output_34_1.png)
+![png](output_36_1.png)
     
 
 
 
 ```python
-real = train[window_size-1:].to_numpy()[:,target_feature_pos]
-real.shape
-predicted.shape
+real = train[WINDOW_SIZE-1:].to_numpy()[:,target_feature_pos]
+print(real.shape)
+print(predicted.shape)
 keras.metrics.mean_absolute_error(real, predicted).numpy()
 ```
 
+    (2114,)
+    (2114,)
 
 
 
-    1.6221427
+
+
+    0.94907665
 
 
 
@@ -2219,7 +2178,39 @@ sns.lineplot(x = range(len(predicted)), y = real)
 
 
     
-![png](output_36_1.png)
+![png](output_38_1.png)
+    
+
+
+
+```python
+# end = 360
+
+# A = pd.DataFrame({'x': range(len(predicted[:end])), 'y': (predicted[:end] + train_mean[target_feature_pos]) * train_std[target_feature_pos], 't' : 'predicted'})
+# B = pd.DataFrame({'x': range(len(predicted[:end])), 'y': (real[:end] + train_mean[target_feature_pos]) * train_std[target_feature_pos], 't': 'real'})
+# C = pd.concat([A, B])
+# sns.lineplot(data = C, x = 'x', y = 'y', hue = 't')
+```
+
+
+```python
+end = 120
+A = pd.DataFrame({'x': range(len(predicted[:end])), 'y': predicted[:end], 't': 'predicted'})
+B = pd.DataFrame({'x': range(len(predicted[:end])), 'y': real[:end], 't': 'real'})
+C = pd.concat([A, B])
+sns.lineplot(data = C, x = 'x', y = 'y', hue = 't')
+```
+
+
+
+
+    <AxesSubplot:xlabel='x', ylabel='y'>
+
+
+
+
+    
+![png](output_40_1.png)
     
 
 
