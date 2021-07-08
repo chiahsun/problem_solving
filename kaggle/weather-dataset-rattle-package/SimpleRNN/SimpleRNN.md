@@ -1900,7 +1900,6 @@ for x, y in train_dataset:
 
 
 ```python
-# TODO: Need normalization first?
 def window_dataset(series, window_size, batch_size = 32, shuffle_buffer = 1000):
     dataset = tf.data.Dataset.from_tensor_slices(series)
     dataset = dataset.window(window_size+1, shift = 1, drop_remainder = True)    
@@ -1985,7 +1984,7 @@ history = model.fit(
 ```
 
     Epoch 1/500
-    67/67 [==============================] - 2s 12ms/step - loss: 17.2225 - mae: 17.7225 - val_loss: 12.3663 - val_mae: 12.8663
+    67/67 [==============================] - 2s 13ms/step - loss: 17.2225 - mae: 17.7225 - val_loss: 12.3663 - val_mae: 12.8663
     Epoch 2/500
     67/67 [==============================] - 1s 9ms/step - loss: 8.3671 - mae: 8.8663 - val_loss: 5.3300 - val_mae: 5.8252
     Epoch 3/500
@@ -2007,7 +2006,7 @@ history = model.fit(
     Epoch 11/500
     67/67 [==============================] - 1s 9ms/step - loss: 0.8203 - mae: 1.2204 - val_loss: 0.8390 - val_mae: 1.2515
     Epoch 12/500
-    67/67 [==============================] - 1s 14ms/step - loss: 0.7929 - mae: 1.1892 - val_loss: 0.8267 - val_mae: 1.2345
+    67/67 [==============================] - 1s 9ms/step - loss: 0.7929 - mae: 1.1892 - val_loss: 0.8267 - val_mae: 1.2345
     Epoch 13/500
     67/67 [==============================] - 1s 9ms/step - loss: 0.8094 - mae: 1.2070 - val_loss: 0.8300 - val_mae: 1.2407
     Epoch 14/500
@@ -2194,7 +2193,7 @@ sns.lineplot(x = range(len(predicted)), y = real)
 
 
 ```python
-end = 120
+end = 360
 A = pd.DataFrame({'x': range(len(predicted[:end])), 'y': predicted[:end], 't': 'predicted'})
 B = pd.DataFrame({'x': range(len(predicted[:end])), 'y': real[:end], 't': 'real'})
 C = pd.concat([A, B])
@@ -2213,6 +2212,383 @@ sns.lineplot(data = C, x = 'x', y = 'y', hue = 't')
 ![png](output_40_1.png)
     
 
+
+# Sequence to Sequence
+
+
+```python
+# We use batch size 1, and don't suffle for sequential window
+def sequential_window_dataset(series, window_size):
+    dataset = tf.data.Dataset.from_tensor_slices(series)
+    dataset = dataset.window(window_size+1, shift = window_size, drop_remainder = True)
+    # dataset = dataset.window(window_size+1, shift = 1, drop_remainder = True) # This work, but mae still cannot beat simple ones in short runs
+    dataset = dataset.flat_map(lambda window: window.batch(window_size+1))
+    # dataset = dataset.map(lambda window: (window[:-1], window[1:]))
+    dataset = dataset.map(lambda window: (window[:-1], window[1:, target_feature_pos]))
+    return dataset.batch(1).prefetch(1)
+```
+
+
+```python
+for X, y in sequential_window_dataset(train, WINDOW_SIZE):
+    print(X.shape, y.shape)
+    break
+```
+
+    (1, 30, 16) (1, 30)
+
+
+
+```python
+class ResetStateCallback(keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs):
+        self.model.reset_states()
+```
+
+
+```python
+keras.backend.clear_session()
+tf.random.set_seed(1)
+np.random.seed(1)
+
+train_seq_window_dataset = sequential_window_dataset(train, WINDOW_SIZE)
+valid_seq_window_dataset = sequential_window_dataset(valid, WINDOW_SIZE)
+
+print(train_seq_window_dataset.element_spec)
+input_shape = train.shape[1]
+print(input_shape)
+```
+
+    (TensorSpec(shape=(None, None, 16), dtype=tf.float64, name=None), TensorSpec(shape=(None, None), dtype=tf.float64, name=None))
+    16
+
+
+
+```python
+"""
+model = keras.models.Sequential([
+    keras.layers.LSTM(100, return_sequences = True, stateful = True, batch_input_shape = [1, None, input_shape]),
+    keras.layers.LSTM(100, return_sequences = True, stateful = True),
+    keras.layers.Dense(100),
+    keras.layers.BatchNormalization(),
+    keras.layers.Dense(1),
+    keras.layers.Lambda(lambda x: x * 40.0),
+])
+"""
+```
+
+
+
+
+    '\nmodel = keras.models.Sequential([\n    keras.layers.LSTM(100, return_sequences = True, stateful = True, batch_input_shape = [1, None, input_shape]),\n    keras.layers.LSTM(100, return_sequences = True, stateful = True),\n    keras.layers.Dense(100),\n    keras.layers.BatchNormalization(),\n    keras.layers.Dense(1),\n    keras.layers.Lambda(lambda x: x * 40.0),\n])\n'
+
+
+
+
+```python
+model = keras.models.Sequential([
+    keras.layers.LSTM(100, return_sequences = True, stateful = True, batch_input_shape = [1, None, input_shape]),
+    keras.layers.Dropout(0.3),
+    keras.layers.LSTM(100, return_sequences = True, stateful = True),
+    keras.layers.Dropout(0.3),
+    keras.layers.Dense(100),
+    keras.layers.BatchNormalization(),
+    keras.layers.Dense(1),
+#    keras.layers.Lambda(lambda x: x * 40.0),
+])
+
+model.summary()
+```
+
+    Model: "sequential"
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    lstm (LSTM)                  (1, None, 100)            46800     
+    _________________________________________________________________
+    dropout (Dropout)            (1, None, 100)            0         
+    _________________________________________________________________
+    lstm_1 (LSTM)                (1, None, 100)            80400     
+    _________________________________________________________________
+    dropout_1 (Dropout)          (1, None, 100)            0         
+    _________________________________________________________________
+    dense (Dense)                (1, None, 100)            10100     
+    _________________________________________________________________
+    batch_normalization (BatchNo (1, None, 100)            400       
+    _________________________________________________________________
+    dense_1 (Dense)              (1, None, 1)              101       
+    =================================================================
+    Total params: 137,801
+    Trainable params: 137,601
+    Non-trainable params: 200
+    _________________________________________________________________
+
+
+
+```python
+reset_states = ResetStateCallback()
+early_stopping = keras.callbacks.EarlyStopping(
+    patience = 10, # TODO: change to 10
+    restore_best_weights = True,
+)
+
+model.compile(
+    optimizer = 'adam',
+    loss = 'huber', # TODO: recover
+#    loss = 'mae', 
+    metrics = ['mae'],
+)
+
+history = model.fit(
+    train_seq_window_dataset,
+    epochs = 500,
+    validation_data = valid_seq_window_dataset,
+    callbacks = [early_stopping, reset_states],
+)
+```
+
+    Epoch 1/500
+    71/71 [==============================] - 3s 17ms/step - loss: 29.7682 - mae: 30.2683 - val_loss: 29.6049 - val_mae: 30.1049
+    Epoch 2/500
+    71/71 [==============================] - 1s 10ms/step - loss: 27.0414 - mae: 27.5414 - val_loss: 26.1535 - val_mae: 26.6535
+    Epoch 3/500
+    71/71 [==============================] - 1s 10ms/step - loss: 21.8201 - mae: 22.3201 - val_loss: 22.2513 - val_mae: 22.7513
+    Epoch 4/500
+    71/71 [==============================] - 1s 10ms/step - loss: 14.0227 - mae: 14.5205 - val_loss: 11.2282 - val_mae: 11.7282
+    Epoch 5/500
+    71/71 [==============================] - 1s 10ms/step - loss: 4.7256 - mae: 5.2066 - val_loss: 1.1657 - val_mae: 1.5881
+    Epoch 6/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.6650 - mae: 2.1125 - val_loss: 0.9118 - val_mae: 1.3313
+    Epoch 7/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.4599 - mae: 1.9026 - val_loss: 2.3366 - val_mae: 2.8231
+    Epoch 8/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.4148 - mae: 1.8509 - val_loss: 0.8931 - val_mae: 1.3126
+    Epoch 9/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.3451 - mae: 1.7817 - val_loss: 0.8775 - val_mae: 1.3003
+    Epoch 10/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.3178 - mae: 1.7564 - val_loss: 0.9052 - val_mae: 1.3279
+    Epoch 11/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.3273 - mae: 1.7648 - val_loss: 0.9878 - val_mae: 1.4014
+    Epoch 12/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2963 - mae: 1.7387 - val_loss: 1.0979 - val_mae: 1.5324
+    Epoch 13/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.3011 - mae: 1.7394 - val_loss: 1.1909 - val_mae: 1.6320
+    Epoch 14/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2847 - mae: 1.7180 - val_loss: 1.0195 - val_mae: 1.4516
+    Epoch 15/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2905 - mae: 1.7259 - val_loss: 0.9454 - val_mae: 1.3707
+    Epoch 16/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.3129 - mae: 1.7506 - val_loss: 1.0111 - val_mae: 1.4416
+    Epoch 17/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2566 - mae: 1.6919 - val_loss: 0.8711 - val_mae: 1.2929
+    Epoch 18/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2551 - mae: 1.6897 - val_loss: 0.8764 - val_mae: 1.2894
+    Epoch 19/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2401 - mae: 1.6730 - val_loss: 0.8847 - val_mae: 1.3047
+    Epoch 20/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2295 - mae: 1.6647 - val_loss: 1.0171 - val_mae: 1.4276
+    Epoch 21/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2652 - mae: 1.7043 - val_loss: 1.2550 - val_mae: 1.7004
+    Epoch 22/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2287 - mae: 1.6615 - val_loss: 0.8420 - val_mae: 1.2527
+    Epoch 23/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2383 - mae: 1.6682 - val_loss: 0.8324 - val_mae: 1.2396
+    Epoch 24/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2295 - mae: 1.6622 - val_loss: 1.0631 - val_mae: 1.4785
+    Epoch 25/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2152 - mae: 1.6467 - val_loss: 0.8745 - val_mae: 1.2941
+    Epoch 26/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.1873 - mae: 1.6183 - val_loss: 0.8716 - val_mae: 1.2832
+    Epoch 27/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.2077 - mae: 1.6389 - val_loss: 0.9198 - val_mae: 1.3407
+    Epoch 28/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.1929 - mae: 1.6273 - val_loss: 0.8443 - val_mae: 1.2616
+    Epoch 29/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.1885 - mae: 1.6159 - val_loss: 0.8791 - val_mae: 1.3006
+    Epoch 30/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.1979 - mae: 1.6300 - val_loss: 0.8812 - val_mae: 1.2975
+    Epoch 31/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.1871 - mae: 1.6198 - val_loss: 0.8906 - val_mae: 1.3103
+    Epoch 32/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.1741 - mae: 1.6081 - val_loss: 0.8802 - val_mae: 1.3012
+    Epoch 33/500
+    71/71 [==============================] - 1s 10ms/step - loss: 1.1841 - mae: 1.6155 - val_loss: 0.9130 - val_mae: 1.3352
+
+
+
+```python
+# TODO: use sequential_window_dataset and map?
+def sequential_window_x_only_dataset(series, window_size):
+    ds = tf.data.Dataset.from_tensor_slices(series)
+    ds = ds.window(window_size, shift = 1, drop_remainder = True)
+    ds = ds.flat_map(lambda w: w.batch(window_size))
+    ds = ds.batch(1).prefetch(1)
+    return ds
+
+ds = sequential_window_x_only_dataset(train, WINDOW_SIZE)
+print(ds.element_spec)
+
+model.reset_states()
+predicted_train = model.predict(ds)
+```
+
+    TensorSpec(shape=(None, None, 16), dtype=tf.float64, name=None)
+
+
+
+```python
+print(predicted_train.shape)
+
+print(predicted_train[0,:,0])
+print(predicted_train[1,:,0])
+predicted_train[:,-1,0]
+# [0]
+```
+
+    (2114, 30, 1)
+    [32.721943 31.979523 30.682182 30.6704   30.10431  31.540792 31.714808
+     30.259827 29.237547 30.120213 30.305037 30.233257 31.18918  31.093817
+     32.14754  32.089806 31.696827 31.32599  30.873245 31.354727 31.893068
+     31.62844  30.395844 29.149075 29.069563 29.705908 30.302626 29.968672
+     31.052698 29.83855 ]
+    [31.822039 31.030584 30.59729  30.051664 31.34291  31.513317 30.172632
+     29.206282 30.090008 30.288134 30.218863 31.173182 31.07647  32.124195
+     32.07246  31.674726 31.316002 30.864918 31.351744 31.884527 31.61933
+     30.401983 29.151823 29.07583  29.708427 30.303307 29.966684 31.051527
+     29.835808 29.838247]
+
+
+
+
+
+    array([29.83855 , 29.838247, 31.401012, ..., 32.962395, 32.938282,
+           32.45922 ], dtype=float32)
+
+
+
+
+```python
+selected_predicted_train = tf.squeeze(
+    predicted_train[:,-1,:],
+    axis = -1,
+)
+print(selected_predicted_train.shape)
+```
+
+    (2114,)
+
+
+
+```python
+
+```
+
+
+```python
+real = train[WINDOW_SIZE-1:].to_numpy()[:,target_feature_pos]
+print(real.shape)
+```
+
+    (2114,)
+
+
+
+```python
+predicted = selected_predicted_train
+end = 120
+A = pd.DataFrame({'x': range(len(predicted[:end])), 'y': predicted[:end], 't': 'predicted'})
+B = pd.DataFrame({'x': range(len(predicted[:end])), 'y': real[:end], 't': 'real'})
+C = pd.concat([A, B])
+sns.lineplot(data = C, x = 'x', y = 'y', hue = 't')
+```
+
+
+
+
+    <AxesSubplot:xlabel='x', ylabel='y'>
+
+
+
+
+    
+![png](output_54_1.png)
+    
+
+
+
+```python
+keras.metrics.mean_absolute_error(real, predicted).numpy()
+```
+
+
+
+
+    0.9818832
+
+
+
+
+```python
+ds = sequential_window_x_only_dataset(test, WINDOW_SIZE)
+model.reset_states()
+predicted_test = model.predict(ds)
+```
+
+
+```python
+selected_predicted_test = tf.squeeze(
+    predicted_test[:,-1,:],
+    axis = -1,
+)
+print(selected_predicted_test.shape)
+```
+
+    (278,)
+
+
+
+```python
+real = test[WINDOW_SIZE-1:].to_numpy()[:,target_feature_pos]
+print(real.shape)
+```
+
+    (278,)
+
+
+
+```python
+predicted = selected_predicted_test
+end = 120
+A = pd.DataFrame({'x': range(len(predicted[:end])), 'y': predicted[:end], 't': 'predicted'})
+B = pd.DataFrame({'x': range(len(predicted[:end])), 'y': real[:end], 't': 'real'})
+C = pd.concat([A, B])
+sns.lineplot(data = C, x = 'x', y = 'y', hue = 't')
+keras.metrics.mean_absolute_error(real, predicted).numpy()
+```
+
+
+
+
+    0.96297514
+
+
+
+
+    
+![png](output_59_1.png)
+    
+
+
+# Reference
+
+[Lession 8 - Time Series Forecasting](https://classroom.udacity.com/courses/ud187)
+
+* RNN
+
+
+```python
+
+```
 
 
 ```python
