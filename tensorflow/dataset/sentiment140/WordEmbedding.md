@@ -101,15 +101,15 @@ for index, w in enumerate(word_set):
 ```
 
       0: 
-      1: fruits
-      2: whose
-      3: terrified.
-      4: @therealpharrell
-      5: kum
-      6: workplace
-      7: @SheriSalata,
-      8: @mattskint
-      9: twitter...
+      1: me~!
+      2: Bugger
+      3: time....
+      4: argument.&quot;-
+      5: ulet
+      6: @idris
+      7: @camiespice
+      8: ahead!
+      9: http://tinyurl.com/m5c8le
 
 
 
@@ -286,6 +286,34 @@ final_train_ds.element_spec
 
 
 ```python
+import pandas as pd
+
+def build_model_and_fit(model, train_ds, valid_ds, epochs = 500, verbose = 0):
+    early_stopping = keras.callbacks.EarlyStopping(
+        patience = 5,
+        restore_best_weights = True,
+    )
+
+    history = model.fit(
+        train_ds,
+        epochs = epochs,
+        validation_data = valid_ds,
+        callbacks = [early_stopping],
+        verbose = verbose,
+    )
+    
+    history_df = pd.DataFrame(history.history)
+    print(f'val_loss: {history_df.val_loss.min():.4f} - val_accuracy: {history_df.val_accuracy.max():.4f}')
+    return history
+```
+
+
+```python
+MAX_EPOCHS = 500
+```
+
+
+```python
 tf.random.set_seed(1)
 np.random.seed(1)
 model = keras.Sequential([
@@ -300,55 +328,226 @@ model.compile(
     loss = keras.losses.SparseCategoricalCrossentropy(from_logits = True),
     metrics = ['accuracy'],
 )
-model.summary()
+# model.summary()
+
+build_model_and_fit(model, final_train_ds, final_valid_ds, MAX_EPOCHS, verbose = 1)
 ```
 
-    Model: "sequential"
-    _________________________________________________________________
-    Layer (type)                 Output Shape              Param #   
-    =================================================================
-    embedding (Embedding)        (None, 36, 16)            2339136   
-    _________________________________________________________________
-    flatten (Flatten)            (None, 576)               0         
-    _________________________________________________________________
-    dense (Dense)                (None, 6)                 3462      
-    _________________________________________________________________
-    dense_1 (Dense)              (None, 5)                 35        
-    =================================================================
-    Total params: 2,342,633
-    Trainable params: 2,342,633
-    Non-trainable params: 0
-    _________________________________________________________________
+    Epoch 1/500
+    2500/2500 [==============================] - 28s 11ms/step - loss: 0.5630 - accuracy: 0.7198 - val_loss: 0.4964 - val_accuracy: 0.7614
+    Epoch 2/500
+    2500/2500 [==============================] - 25s 10ms/step - loss: 0.3513 - accuracy: 0.8539 - val_loss: 0.5597 - val_accuracy: 0.7487
+    Epoch 3/500
+    2500/2500 [==============================] - 25s 10ms/step - loss: 0.1941 - accuracy: 0.9253 - val_loss: 0.6777 - val_accuracy: 0.7363
+    Epoch 4/500
+    2500/2500 [==============================] - 26s 10ms/step - loss: 0.1079 - accuracy: 0.9613 - val_loss: 0.8167 - val_accuracy: 0.7302
+    Epoch 5/500
+    2500/2500 [==============================] - 26s 10ms/step - loss: 0.0628 - accuracy: 0.9780 - val_loss: 0.9855 - val_accuracy: 0.7230
+    Epoch 6/500
+    2500/2500 [==============================] - 25s 10ms/step - loss: 0.0386 - accuracy: 0.9868 - val_loss: 1.1640 - val_accuracy: 0.7156
+    val_loss: 0.4964 - val_accuracy: 0.7614
+
+
+
+
+
+    <tensorflow.python.keras.callbacks.History at 0x19ae8e040>
+
 
 
 
 ```python
-early_stopping = keras.callbacks.EarlyStopping(
-    patience = 5,
-    restore_best_weights = True,
+tf.random.set_seed(1)
+np.random.seed(1)
+model = keras.Sequential([
+    keras.layers.Embedding(VOCAB_SIZE, 16, input_length = maxlen),
+    keras.layers.GlobalAveragePooling1D(),
+    keras.layers.Dense(6, activation = 'relu'),
+    keras.layers.Dense(5),
+])
+
+model.compile(
+    optimizer = 'adam',
+    loss = keras.losses.SparseCategoricalCrossentropy(from_logits = True),
+    metrics = ['accuracy'],
 )
 
-history = model.fit(
-    final_train_ds,
-    epochs = 500,
-    validation_data = (final_valid_ds),
-    callbacks = [early_stopping],
-    # verbose = 0,
-)
+build_model_and_fit(model, final_train_ds, final_valid_ds, MAX_EPOCHS, verbose = 1)
 ```
 
     Epoch 1/500
-    2500/2500 [==============================] - 26s 10ms/step - loss: 0.5630 - accuracy: 0.7198 - val_loss: 0.4964 - val_accuracy: 0.7614
+    2500/2500 [==============================] - 24s 10ms/step - loss: 0.6621 - accuracy: 0.6754 - val_loss: 0.5221 - val_accuracy: 0.7564
     Epoch 2/500
-    2500/2500 [==============================] - 26s 10ms/step - loss: 0.3513 - accuracy: 0.8539 - val_loss: 0.5597 - val_accuracy: 0.7487
+    2500/2500 [==============================] - 24s 10ms/step - loss: 0.4663 - accuracy: 0.7929 - val_loss: 0.4903 - val_accuracy: 0.7745
     Epoch 3/500
-    2500/2500 [==============================] - 26s 10ms/step - loss: 0.1941 - accuracy: 0.9253 - val_loss: 0.6777 - val_accuracy: 0.7363
+    2500/2500 [==============================] - 24s 10ms/step - loss: 0.4123 - accuracy: 0.8235 - val_loss: 0.4873 - val_accuracy: 0.7770
     Epoch 4/500
-    2500/2500 [==============================] - 25s 10ms/step - loss: 0.1079 - accuracy: 0.9613 - val_loss: 0.8167 - val_accuracy: 0.7302
+    2500/2500 [==============================] - 24s 10ms/step - loss: 0.3698 - accuracy: 0.8461 - val_loss: 0.4962 - val_accuracy: 0.7746
     Epoch 5/500
-    2500/2500 [==============================] - 25s 10ms/step - loss: 0.0628 - accuracy: 0.9780 - val_loss: 0.9855 - val_accuracy: 0.7230
+    2500/2500 [==============================] - 24s 10ms/step - loss: 0.3307 - accuracy: 0.8663 - val_loss: 0.5131 - val_accuracy: 0.7693
     Epoch 6/500
-    2500/2500 [==============================] - 26s 10ms/step - loss: 0.0386 - accuracy: 0.9868 - val_loss: 1.1640 - val_accuracy: 0.7156
+    2500/2500 [==============================] - 24s 10ms/step - loss: 0.2939 - accuracy: 0.8840 - val_loss: 0.5399 - val_accuracy: 0.7641
+    Epoch 7/500
+    2500/2500 [==============================] - 24s 10ms/step - loss: 0.2601 - accuracy: 0.8997 - val_loss: 0.5764 - val_accuracy: 0.7571
+    Epoch 8/500
+    2500/2500 [==============================] - 23s 9ms/step - loss: 0.2299 - accuracy: 0.9126 - val_loss: 0.6163 - val_accuracy: 0.7521
+    val_loss: 0.4873 - val_accuracy: 0.7770
+
+
+
+
+
+    <tensorflow.python.keras.callbacks.History at 0x199b9efa0>
+
+
+
+
+```python
+tf.random.set_seed(1)
+np.random.seed(1)
+model = keras.Sequential([
+    keras.layers.Embedding(VOCAB_SIZE, 16, input_length = maxlen),
+    keras.layers.GlobalAveragePooling1D(),
+    keras.layers.Dense(32, activation = 'relu'),
+    keras.layers.Dense(32, activation = 'relu'),
+    keras.layers.Dense(32, activation = 'relu'),
+    keras.layers.Dense(5),
+])
+
+model.compile(
+    optimizer = 'adam',
+    loss = keras.losses.SparseCategoricalCrossentropy(from_logits = True),
+    metrics = ['accuracy'],
+)
+
+build_model_and_fit(model, final_train_ds, final_valid_ds, MAX_EPOCHS, verbose = 1)
+```
+
+    Epoch 1/500
+    2500/2500 [==============================] - 24s 9ms/step - loss: 0.5649 - accuracy: 0.7072 - val_loss: 0.4865 - val_accuracy: 0.7737
+    Epoch 2/500
+    2500/2500 [==============================] - 23s 9ms/step - loss: 0.4102 - accuracy: 0.8204 - val_loss: 0.4790 - val_accuracy: 0.7747
+    Epoch 3/500
+    2500/2500 [==============================] - 23s 9ms/step - loss: 0.3346 - accuracy: 0.8611 - val_loss: 0.5087 - val_accuracy: 0.7632
+    Epoch 4/500
+    2500/2500 [==============================] - 23s 9ms/step - loss: 0.2691 - accuracy: 0.8919 - val_loss: 0.5757 - val_accuracy: 0.7476
+    Epoch 5/500
+    2500/2500 [==============================] - 23s 9ms/step - loss: 0.2174 - accuracy: 0.9140 - val_loss: 0.6817 - val_accuracy: 0.7352
+    Epoch 6/500
+    2500/2500 [==============================] - 23s 9ms/step - loss: 0.1805 - accuracy: 0.9290 - val_loss: 0.7481 - val_accuracy: 0.7300
+    Epoch 7/500
+    2500/2500 [==============================] - 23s 9ms/step - loss: 0.1539 - accuracy: 0.9401 - val_loss: 0.8181 - val_accuracy: 0.7230
+    val_loss: 0.4790 - val_accuracy: 0.7747
+
+
+
+
+
+    <tensorflow.python.keras.callbacks.History at 0x19a564af0>
+
+
+
+
+```python
+tf.random.set_seed(1)
+np.random.seed(1)
+model = keras.Sequential([
+    keras.layers.Embedding(VOCAB_SIZE, 32, input_length = maxlen),
+    keras.layers.GlobalAveragePooling1D(),
+    keras.layers.Dense(32, activation = 'relu'),
+    keras.layers.Dense(32, activation = 'relu'),
+    keras.layers.Dense(32, activation = 'relu'),
+    keras.layers.Dense(5),
+])
+
+model.compile(
+    optimizer = 'adam',
+    loss = keras.losses.SparseCategoricalCrossentropy(from_logits = True),
+    metrics = ['accuracy'],
+)
+
+build_model_and_fit(model, final_train_ds, final_valid_ds, MAX_EPOCHS, verbose = 1)
+```
+
+    Epoch 1/500
+    2500/2500 [==============================] - 82s 33ms/step - loss: 0.5546 - accuracy: 0.7129 - val_loss: 0.4779 - val_accuracy: 0.7726
+    Epoch 2/500
+    2500/2500 [==============================] - 81s 32ms/step - loss: 0.3958 - accuracy: 0.8236 - val_loss: 0.4773 - val_accuracy: 0.7733
+    Epoch 3/500
+    2500/2500 [==============================] - 81s 32ms/step - loss: 0.3112 - accuracy: 0.8664 - val_loss: 0.5447 - val_accuracy: 0.7612
+    Epoch 4/500
+    2500/2500 [==============================] - 80s 32ms/step - loss: 0.2367 - accuracy: 0.9017 - val_loss: 0.6467 - val_accuracy: 0.7497
+    Epoch 5/500
+    2500/2500 [==============================] - 77s 31ms/step - loss: 0.1815 - accuracy: 0.9276 - val_loss: 0.7543 - val_accuracy: 0.7330
+    Epoch 6/500
+    2500/2500 [==============================] - 77s 31ms/step - loss: 0.1428 - accuracy: 0.9444 - val_loss: 0.8936 - val_accuracy: 0.7277
+    Epoch 7/500
+    2500/2500 [==============================] - 88s 35ms/step - loss: 0.1181 - accuracy: 0.9540 - val_loss: 0.9940 - val_accuracy: 0.7253
+    val_loss: 0.4773 - val_accuracy: 0.7733
+
+
+
+
+
+    <tensorflow.python.keras.callbacks.History at 0x19a691400>
+
+
+
+# Train for More Data
+
+
+```python
+more_train_ds = tfds.load('sentiment140', split = 'train[0:10%]', as_supervised = True)
+more_valid_ds = tfds.load('sentiment140', split = 'train[10%:12%]', as_supervised = True)
+
+more_train_ds = get_dataset_from_original_ds(more_train_ds)
+more_valid_ds = get_dataset_from_original_ds(more_valid_ds)
+```
+
+
+```python
+tf.random.set_seed(1)
+np.random.seed(1)
+model = keras.Sequential([
+    keras.layers.Embedding(VOCAB_SIZE, 16, input_length = maxlen),
+    keras.layers.GlobalAveragePooling1D(),
+    keras.layers.Dense(6, activation = 'relu'),
+    keras.layers.Dense(5),
+])
+
+model.compile(
+    optimizer = 'adam',
+    loss = keras.losses.SparseCategoricalCrossentropy(from_logits = True),
+    metrics = ['accuracy'],
+)
+
+build_model_and_fit(model, more_train_ds, more_valid_ds, MAX_EPOCHS, verbose = 1)
+```
+
+    Epoch 1/500
+    5000/5000 [==============================] - 77s 15ms/step - loss: 0.5767 - accuracy: 0.7255 - val_loss: 0.4777 - val_accuracy: 0.7835
+    Epoch 2/500
+    5000/5000 [==============================] - 73s 15ms/step - loss: 0.4445 - accuracy: 0.8016 - val_loss: 0.4600 - val_accuracy: 0.7901
+    Epoch 3/500
+    5000/5000 [==============================] - 81s 16ms/step - loss: 0.4096 - accuracy: 0.8195 - val_loss: 0.4534 - val_accuracy: 0.7906
+    Epoch 4/500
+    5000/5000 [==============================] - 90s 18ms/step - loss: 0.3828 - accuracy: 0.8317 - val_loss: 0.4568 - val_accuracy: 0.7893
+    Epoch 5/500
+    5000/5000 [==============================] - 88s 18ms/step - loss: 0.3611 - accuracy: 0.8420 - val_loss: 0.4645 - val_accuracy: 0.7861
+    Epoch 6/500
+    5000/5000 [==============================] - 87s 17ms/step - loss: 0.3421 - accuracy: 0.8499 - val_loss: 0.4755 - val_accuracy: 0.7811
+    Epoch 7/500
+    5000/5000 [==============================] - 87s 17ms/step - loss: 0.3252 - accuracy: 0.8571 - val_loss: 0.4891 - val_accuracy: 0.7782
+    Epoch 8/500
+    5000/5000 [==============================] - 72s 14ms/step - loss: 0.3101 - accuracy: 0.8637 - val_loss: 0.5056 - val_accuracy: 0.7751
+    val_loss: 0.4534 - val_accuracy: 0.7906
+
+
+
+
+
+    <tensorflow.python.keras.callbacks.History at 0x19b67fc40>
+
 
 
 # Predict on Test Data
@@ -365,7 +564,7 @@ predicted = list(map(lambda x: x.numpy(), predicted))
 print(predicted)
 ```
 
-    [4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4]
+    [4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4]
 
 
 
@@ -386,7 +585,7 @@ pd.set_option('display.max_colwidth', None)
 df = pd.DataFrame({'real': real, 'predicted': predicted, 'text': xs})
 # https://stackoverflow.com/questions/25351968/how-can-i-display-full-non-truncated-dataframe-information-in-html-when-conver
 with pd.option_context('display.max_colwidth', -1):     
-    display(df)
+    display(df)    
 ```
 
 
@@ -513,19 +712,19 @@ with pd.option_context('display.max_colwidth', -1):
     <tr>
       <th>16</th>
       <td>4</td>
-      <td>4</td>
+      <td>0</td>
       <td>@Leah923 &amp;quot;Yeah Eric&amp;quot; is an inside joke that only 1 percent of the listeners get (and none in syndication) but it always cracks us up!</td>
     </tr>
     <tr>
       <th>17</th>
       <td>4</td>
-      <td>4</td>
+      <td>0</td>
       <td>@cswtham Growl is a kind of notification thing. So, when someone starts chatting, a notification pops up on screen. It's fine to get</td>
     </tr>
     <tr>
       <th>18</th>
       <td>0</td>
-      <td>4</td>
+      <td>0</td>
       <td>A coffee and some formula diet pulver is a good start into a week. Why diet drink? If I will get a permanent job I have to loose 9 kilos</td>
     </tr>
     <tr>
@@ -542,3 +741,7 @@ with pd.option_context('display.max_colwidth', -1):
 # Reference
 
 [UD187 Intro to TensorFlow for Deep Learning - Lession 9: NLP Tokenization and Embedding](https://classroom.udacity.com/courses/ud187)
+
+[Colab - Word Embeddings and Sentiment](https://colab.research.google.com/github/tensorflow/examples/blob/master/courses/udacity_intro_to_tensorflow_for_deep_learning/l09c04_nlp_embeddings_and_sentiment.ipynb)
+
+[Colab - Tweaking the model](https://colab.research.google.com/github/tensorflow/examples/blob/master/courses/udacity_intro_to_tensorflow_for_deep_learning/l09c05_nlp_tweaking_the_model.ipynb)
