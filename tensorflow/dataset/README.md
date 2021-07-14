@@ -1,4 +1,6 @@
+[Tensorflow Datasets](https://www.tensorflow.org/datasets/catalog/overview)
 
 | dataset | tags |
 | :-: | :-: |
-| sentiment140 | `multi-Class classification`, `sentiment analysis`|
+| mnist | `multi-class classification`, `image classification` |
+| sentiment140 | `multi-class classification`, `sentiment analysis`|
