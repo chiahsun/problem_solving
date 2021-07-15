@@ -2,7 +2,9 @@
 
 [Data catalog](https://www.tensorflow.org/datasets/catalog/tf_flowers)
 
-Most code follows the [load and preprocess images guide](https://www.tensorflow.org/tutorials/load_data/images)
+Most code follows the 
+* [Load and preprocess images guide](https://www.tensorflow.org/tutorials/load_data/images)
+* [Image classification guide](https://www.tensorflow.org/tutorials/images/classification)
 
 
 ```python
@@ -180,33 +182,51 @@ def resize_image(image, label):
     return image, label
 
 def normalize_image(image, label):
-    image, label = resize_image(image, label)
     return tf.cast(image, tf.float32) / 255.0, label
 
-
-def create_train_batch(ds):
-    ds = ds.map(normalize_image, num_parallel_calls = tf.data.AUTOTUNE)
+# Parameter augmentation will be used later in data augmentation
+def create_train_batch_ds(ds, transformations, augmentation = None):
+    for tr in transformations:
+        ds = ds.map(tr, num_parallel_calls = tf.data.AUTOTUNE)
     ds = ds.cache()
     ds = ds.shuffle(1000, seed = 1, reshuffle_each_iteration = False)
     ds = ds.batch(batch_size)
+    if augmentation is not None:
+        ds = ds.map(augmentation, num_parallel_calls = tf.data.AUTOTUNE)
+    
     ds = ds.prefetch(tf.data.AUTOTUNE)
     return ds
 
-train_batch = create_train_batch(train_ds)
+first_transformations = [resize_image, normalize_image]
+train_batch_ds = create_train_batch_ds(train_ds, first_transformations)
 ```
 
 
 ```python
-def create_test_set(ds):
-    ds = ds.map(normalize_image, num_parallel_calls = tf.data.AUTOTUNE)
+def create_test_batch_ds(ds, transformations):
+    for tr in transformations:
+        ds = ds.map(tr, num_parallel_calls = tf.data.AUTOTUNE)
     ds = ds.batch(batch_size)
     ds = ds.cache()
     ds = ds.prefetch(tf.data.AUTOTUNE)
     return ds
 
-valid_batch = create_test_set(valid_ds)
-test_batch = create_test_set(test_ds)
+valid_batch_ds = create_test_batch_ds(valid_ds, first_transformations)
+test_batch_ds = create_test_batch_ds(test_ds, first_transformations)
 ```
+
+
+```python
+for (image_batch, label_batch) in train_batch_ds.take(1):
+    print(image_batch.shape)
+    print(image_batch[0].numpy().min())
+    print(image_batch[0].numpy().max())
+```
+
+    (128, 200, 200, 3)
+    0.0
+    0.9882619
+
 
 
 ```python
@@ -229,7 +249,7 @@ for image, label in train_ds.take(1):
 
 
     
-![png](output_13_0.png)
+![png](output_14_0.png)
     
 
 
@@ -258,7 +278,7 @@ model = keras.models.Sequential([
 ```python
 import time
 
-def fit_model(model, patience = 5, epochs = 20, verbose = 0):
+def fit_model(model, train_batch_ds = train_batch_ds, patience = 5, epochs = 20, verbose = 0):
     start = time.time()
 
     model.compile(
@@ -270,9 +290,9 @@ def fit_model(model, patience = 5, epochs = 20, verbose = 0):
     early_stopping = keras.callbacks.EarlyStopping(patience = patience, restore_best_weights = True)
 
     history = model.fit(
-        train_batch,
+        train_batch_ds,
         epochs = epochs,
-        validation_data = valid_batch,
+        validation_data = valid_batch_ds,
         callbacks = [early_stopping],
         verbose = verbose,
     )
@@ -316,19 +336,19 @@ model = keras.models.Sequential([
 fit_model(model, epochs = 1)
 ```
 
-    val_loss: 8.6484 - val_sparse_categorical_accuracy: 0.3433
-    5.088199853897095
+    val_loss: 12.5725 - val_sparse_categorical_accuracy: 0.2425
+    6.457322120666504
 
 
 
     
-![png](output_18_1.png)
+![png](output_19_1.png)
     
 
 
 
     
-![png](output_18_2.png)
+![png](output_19_2.png)
     
 
 
@@ -347,19 +367,19 @@ model = keras.models.Sequential([
 fit_model(model)
 ```
 
-    val_loss: 1.5060 - val_sparse_categorical_accuracy: 0.3842
-    29.524439096450806
+    val_loss: 1.5956 - val_sparse_categorical_accuracy: 0.2425
+    32.17091083526611
 
 
 
     
-![png](output_19_1.png)
+![png](output_20_1.png)
     
 
 
 
     
-![png](output_19_2.png)
+![png](output_20_2.png)
     
 
 
@@ -383,13 +403,13 @@ fit_model(model)
 
 
     
-![png](output_20_1.png)
+![png](output_21_1.png)
     
 
 
 
     
-![png](output_20_2.png)
+![png](output_21_2.png)
     
 
 
@@ -413,13 +433,13 @@ fit_model(model)
 
 
     
-![png](output_21_1.png)
+![png](output_22_1.png)
     
 
 
 
     
-![png](output_21_2.png)
+![png](output_22_2.png)
     
 
 
@@ -439,18 +459,19 @@ model = keras.models.Sequential([
 fit_model(model)
 ```
 
-    val_loss: 1.2768 - val_sparse_categorical_accuracy: 0.4986
+    val_loss: 1.3546 - val_sparse_categorical_accuracy: 0.4332
+    137.95959615707397
 
 
 
     
-![png](output_22_1.png)
+![png](output_23_1.png)
     
 
 
 
     
-![png](output_22_2.png)
+![png](output_23_2.png)
     
 
 
@@ -474,13 +495,13 @@ fit_model(model)
 
 
     
-![png](output_23_1.png)
+![png](output_24_1.png)
     
 
 
 
     
-![png](output_23_2.png)
+![png](output_24_2.png)
     
 
 
@@ -504,13 +525,13 @@ fit_model(model)
 
 
     
-![png](output_24_1.png)
+![png](output_25_1.png)
     
 
 
 
     
-![png](output_24_2.png)
+![png](output_25_2.png)
     
 
 
@@ -536,7 +557,7 @@ fit_model(model)
 
 
     
-![png](output_25_1.png)
+![png](output_26_1.png)
     
 
 
@@ -562,7 +583,7 @@ fit_model(model)
 
 
     
-![png](output_26_1.png)
+![png](output_27_1.png)
     
 
 
@@ -588,7 +609,7 @@ fit_model(model)
 
 
     
-![png](output_27_1.png)
+![png](output_28_1.png)
     
 
 
@@ -616,7 +637,7 @@ fit_model(model)
 
 
     
-![png](output_28_1.png)
+![png](output_29_1.png)
     
 
 
@@ -644,7 +665,7 @@ fit_model(model)
 
 
     
-![png](output_29_1.png)
+![png](output_30_1.png)
     
 
 
@@ -690,13 +711,13 @@ fit_model(model)
 
 
     
-![png](output_32_1.png)
+![png](output_33_1.png)
     
 
 
 
     
-![png](output_32_2.png)
+![png](output_33_2.png)
     
 
 
@@ -723,13 +744,13 @@ fit_model(model)
 
 
     
-![png](output_33_1.png)
+![png](output_34_1.png)
     
 
 
 
     
-![png](output_33_2.png)
+![png](output_34_2.png)
     
 
 
@@ -751,18 +772,19 @@ model = keras.models.Sequential([
 fit_model(model)
 ```
 
-    val_loss: 0.9430 - val_sparse_categorical_accuracy: 0.6785
+    val_loss: 0.9842 - val_sparse_categorical_accuracy: 0.6540
+    165.6972460746765
 
 
 
     
-![png](output_34_1.png)
+![png](output_35_1.png)
     
 
 
 
     
-![png](output_34_2.png)
+![png](output_35_2.png)
     
 
 
@@ -790,13 +812,13 @@ fit_model(model)
 
 
     
-![png](output_35_1.png)
+![png](output_36_1.png)
     
 
 
 
     
-![png](output_35_2.png)
+![png](output_36_2.png)
     
 
 
@@ -826,13 +848,13 @@ fit_model(model)
 
 
     
-![png](output_36_1.png)
+![png](output_37_1.png)
     
 
 
 
     
-![png](output_36_2.png)
+![png](output_37_2.png)
     
 
 
@@ -860,13 +882,13 @@ fit_model(model)
 
 
     
-![png](output_37_1.png)
+![png](output_38_1.png)
     
 
 
 
     
-![png](output_37_2.png)
+![png](output_38_2.png)
     
 
 
@@ -894,13 +916,13 @@ fit_model(model)
 
 
     
-![png](output_38_1.png)
+![png](output_39_1.png)
     
 
 
 
     
-![png](output_38_2.png)
+![png](output_39_2.png)
     
 
 
@@ -930,17 +952,187 @@ fit_model(model)
 
 
     
-![png](output_39_1.png)
+![png](output_40_1.png)
     
 
 
 
     
-![png](output_39_2.png)
+![png](output_40_2.png)
     
 
 
 
 ```python
+tf.random.set_seed(1)
+np.random.seed(1)
 
+# https://www.tensorflow.org/tutorials/images/classification
+model = keras.models.Sequential([
+    keras.layers.InputLayer(input_shape = (width, height, 3)),
+    keras.layers.Conv2D(16, 3, padding = 'same', activation = 'relu'),
+    keras.layers.MaxPool2D(),
+    keras.layers.Conv2D(32, 3, padding = 'same', activation = 'relu'),
+    keras.layers.MaxPool2D(),
+    keras.layers.Conv2D(64, 3, padding = 'same', activation = 'relu'),
+    keras.layers.MaxPool2D(),
+    keras.layers.Flatten(),
+    keras.layers.Dense(128, activation = 'relu'),
+    keras.layers.Dense(len(flower_names)),
+])
+
+fit_model(model)
 ```
+
+    val_loss: 1.0012 - val_sparse_categorical_accuracy: 0.6213
+    240.18468713760376
+
+
+
+    
+![png](output_41_1.png)
+    
+
+
+
+    
+![png](output_41_2.png)
+    
+
+
+# Data Augmentation and Dropout
+
+When there is few training data, the model learns from noises and causes over-fitting.
+
+We try to increase the training data by data augmentation.
+
+This part mainly follows
+
+* [The image classification tutorial](https://www.tensorflow.org/tutorials/images/classification)
+  * Add augmentation in model layer
+
+* [Data augmentation tutorial](https://www.tensorflow.org/tutorials/images/data_augmentation)
+  * Add augmentation in training set (We choose this approach)
+
+
+```python
+image_augmentations = keras.Sequential([
+    keras.layers.experimental.preprocessing.RandomFlip("horizontal", input_shape = (width, height, 3)),
+    keras.layers.experimental.preprocessing.RandomRotation(0.1),
+    keras.layers.experimental.preprocessing.RandomZoom(0.1),
+])
+
+def augment_image(image, label):
+    return image_augmentations(image), label
+
+plt.figure(figsize = (10 ,10))
+for image, _ in train_ds.take(1):
+    print(image.shape)
+    for i in range(9):
+        # The input and output are batch so we add a new axis
+        augmented_image = image_augmentations(image.numpy()[np.newaxis, ...])
+        ax = plt.subplot(3, 3, i+1)
+        plt.imshow((augmented_image[0].numpy()).astype('uint8'))
+```
+
+    (212, 320, 3)
+
+
+
+    
+![png](output_45_1.png)
+    
+
+
+
+```python
+# We only perform data augmentation on training set
+augmented_train_batch_ds = create_train_batch_ds(train_ds, first_transformations, augment_image)
+```
+
+
+```python
+tf.random.set_seed(1)
+np.random.seed(1)
+
+# https://www.tensorflow.org/tutorials/images/classification
+model = keras.models.Sequential([
+    keras.layers.InputLayer(input_shape = (width, height, 3)),
+    keras.layers.Conv2D(16, 3, padding = 'same', activation = 'relu'),
+    keras.layers.MaxPool2D(),
+    keras.layers.Conv2D(32, 3, padding = 'same', activation = 'relu'),
+    keras.layers.MaxPool2D(),
+    keras.layers.Conv2D(64, 3, padding = 'same', activation = 'relu'),
+    keras.layers.MaxPool2D(),
+    keras.layers.Dropout(0.2),
+    keras.layers.Flatten(),
+    keras.layers.Dense(128, activation = 'relu'),
+    keras.layers.Dropout(0.2),
+    keras.layers.Dense(len(flower_names)),
+])
+
+fit_model(model, train_batch_ds = augmented_train_batch_ds)
+```
+
+    val_loss: 0.7900 - val_sparse_categorical_accuracy: 0.7139
+    520.8576159477234
+
+
+
+    
+![png](output_47_1.png)
+    
+
+
+
+    
+![png](output_47_2.png)
+    
+
+
+# Evaluation
+
+
+```python
+result = model.evaluate(test_batch_ds)
+```
+
+    3/3 [==============================] - 1s 214ms/step - loss: 0.6898 - sparse_categorical_accuracy: 0.7466
+
+
+# Predict on New Data
+
+
+```python
+sunflower_url = 'https://storage.googleapis.com/download.tensorflow.org/example_images/592px-Red_sunflower.jpg'
+sunflower_path = tf.keras.utils.get_file('592px-Red_sunflower.jpg', origin = sunflower_url)
+
+img = keras.preprocessing.image.load_img(sunflower_path, target_size = (width, height))
+img = keras.preprocessing.image.img_to_array(img)
+
+predictions = model.predict(tf.expand_dims(img, 0))
+prediction = predictions[0]
+print(prediction)
+
+probs = tf.nn.softmax(prediction).numpy()
+print(probs)
+label = np.argmax(probs)
+print(flower_names[label])
+```
+
+    [ -803.96436  -1950.3151     213.69614   1136.5825     -57.369003]
+    [0. 0. 0. 1. 0.]
+    sunflowers
+
+
+
+```python
+plt.imshow(img.astype("uint8"))
+_ = plt.title(flower_names[label])
+```
+
+
+    
+![png](output_52_0.png)
+    
+
