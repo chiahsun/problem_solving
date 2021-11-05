@@ -25,3 +25,9 @@ Status: Accepted
 Runtime: 8 ms
 
 Your runtime beats 100.00 % of golang submissions.
+
+# solve1.swift
+
+Runtime: 4 ms, faster than 100.00% of Swift online submissions for Arranging Coins.
+
+Memory Usage: 14 MB, less than 29.41% of Swift online submissions for Arranging Coins.
