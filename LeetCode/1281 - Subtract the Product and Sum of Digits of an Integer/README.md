@@ -1,4 +1,4 @@
-# solve1.cc
+# solve1.swift
 
 Runtime: 0 ms, faster than 100.00% of Swift online submissions for Subtract the Product and Sum of Digits of an Integer.
 
