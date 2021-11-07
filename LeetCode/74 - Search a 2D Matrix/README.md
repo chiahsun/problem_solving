@@ -19,4 +19,8 @@ Runtime: 13 ms
 
 Your runtime beats 71.36 % of cpp submissions.
 
+# solve1.swift(Binary search)
 
+Runtime: 24 ms, faster than 71.43% of Swift online submissions for Search a 2D Matrix.
+
+Memory Usage: 14 MB, less than 80.67% of Swift online submissions for Search a 2D Matrix.
