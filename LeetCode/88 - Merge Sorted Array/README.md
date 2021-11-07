@@ -11,3 +11,8 @@ Runtime: 8 ms, faster than 91.49% of Swift online submissions for Merge Sorted A
 
 Memory Usage: 14.4 MB, less than 12.41% of Swift online submissions for Merge Sorted Array.
 
+# solve2.swift (In place and start from the end which is faster and easier)
+
+Runtime: 4 ms, faster than 99.65% of Swift online submissions for Merge Sorted Array.
+
+Memory Usage: 14.1 MB, less than 25.00% of Swift online submissions for Merge Sorted Array.
