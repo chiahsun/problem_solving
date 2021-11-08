@@ -38,3 +38,9 @@ Runtime: 6 ms
 
 Your runtime beats 99.69 % of cpp submissions.
 
+# solve1.swift
+
+Runtime: 24 ms, faster than 99.80% of Swift online submissions for Two Sum II - Input Array Is Sorted.
+
+Memory Usage: 14.1 MB, less than 96.68% of Swift online submissions for Two Sum II - Input Array Is Sorted.
+
