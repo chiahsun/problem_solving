@@ -14,3 +14,8 @@ Runtime: 108 ms
 
 Your runtime beats 72.29 % of python3 submissions.
 
+# solve1.swift
+
+Runtime: 64 ms, faster than 93.75% of Swift online submissions for Max Area of Island.
+
+Memory Usage: 14.2 MB, less than 85.00% of Swift online submissions for Max Area of Island.
