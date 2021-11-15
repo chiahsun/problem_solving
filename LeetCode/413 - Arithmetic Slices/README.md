@@ -1,9 +1,11 @@
-1. solve1.js
+# solve1.js
 
-
-15 / 15 test cases passed.
-Status: Accepted
 Runtime: 88 ms
 
 Your runtime beats 81.52% of javascript submissions.
 
+# solve1.swift
+
+Runtime: 8 ms, faster than 94.44% of Swift online submissions for Arithmetic Slices.
+
+Memory Usage: 14.3 MB, less than 19.44% of Swift online submissions for Arithmetic Slices.
