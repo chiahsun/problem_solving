@@ -1,49 +1,47 @@
-# Submission Details
-[solve1.cc]
-42 / 42 test cases passed.
-Status: Accepted
+# solve1.cc
+
 Runtime: 40 ms
 
 beats 14.36%
 
-[solve2.cc]
-Submission Details
-42 / 42 test cases passed.
-Status: Accepted
+# solve2.cc
+
 Runtime: 40 ms
 
 beats 14.36%
 
-[solve3.cc]
-Submission Details
-42 / 42 test cases passed.
-Status: Accepted
+# solve3.cc
+
 Runtime: 20 ms
 
 beats 54.98%
 
 # solve1.py
 
-44 / 44 test cases passed.
-Status: Accepted
 Runtime: 115 ms
 
 Your runtime beats 5.30 % of python submissions.
 
 # solve2.py
 
-
-44 / 44 test cases passed.
-Status: Accepted
 Runtime: 115 ms
 
 Your runtime beats 5.30 % of python submissions.
 
 # solve3.py
 
-44 / 44 test cases passed.
-Status: Accepted
 Runtime: 68 ms
 
 Your runtime beats 43.91 % of python submissions.
 
+# solve1.swift
+
+Runtime: 116 ms, faster than 69.06% of Swift online submissions for Majority Element.
+
+Memory Usage: 15.2 MB, less than 98.65% of Swift online submissions for Majority Element.
+
+# solve2.swift
+
+Runtime: 108 ms, faster than 98.65% of Swift online submissions for Majority Element.
+
+Memory Usage: 15.8 MB, less than 52.02% of Swift online submissions for Majority Element.
