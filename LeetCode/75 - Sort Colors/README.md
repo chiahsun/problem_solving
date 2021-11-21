@@ -2,8 +2,6 @@
 
 Counting sort but two pass
 
-87 / 87 test cases passed.
-Status: Accepted
 Runtime: 4 ms
 
 Your runtime beats 100.00 % of cpp submissions.
@@ -12,10 +10,12 @@ Your runtime beats 100.00 % of cpp submissions.
 
 One pass algorithm with three pointers.
 
-87 / 87 test cases passed.
-Status: Accepted
 Runtime: 4 ms
 
 Your runtime beats 100.00 % of cpp submissions.
 
 A bit complicated to implement ...
+
+# solve1.swift
+
+Count number of 0, 1, 2 and assign them afterwards.
