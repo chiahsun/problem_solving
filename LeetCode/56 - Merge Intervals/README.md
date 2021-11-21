@@ -2,8 +2,6 @@
 
 Use sort
 
-169 / 169 test cases passed.
-Status: Accepted
 Runtime: 16 ms
 
 Your runtime beats 61.42 % of cpp submissions.
@@ -12,9 +10,13 @@ Your runtime beats 61.42 % of cpp submissions.
 
 Correct order leads to less read and write.
 
-169 / 169 test cases passed.
-Status: Accepted
 Runtime: 15 ms
 
 Your runtime beats 88.29 % of cpp submissions.
+
+# solve1.swift
+
+Runtime: 56 ms, faster than 73.06% of Swift online submissions for Merge Intervals.
+
+Memory Usage: 14.9 MB, less than 49.59% of Swift online submissions for Merge Intervals.
 
