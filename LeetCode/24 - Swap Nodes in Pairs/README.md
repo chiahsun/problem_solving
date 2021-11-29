@@ -1,15 +1,17 @@
-[solve1.cc]
+# solve1.cc
 
-55 / 55 test cases passed.
-Status: Accepted
 Runtime: 4 ms
 
 Your runtime beats 1.83% of cppsubmissions.
 
+# solve.py
 
-[solve.py]
-55 / 55 test cases passed.
-Status: Accepted
 Runtime: 48 ms
 
 Your runtime beats 19.78% of pythonsubmissions.
+
+# solve1.swift
+
+Runtime: 4 ms, faster than 80.57% of Swift online submissions for Swap Nodes in Pairs.
+
+Memory Usage: 14 MB, less than 20.00% of Swift online submissions for Swap Nodes in Pairs.
