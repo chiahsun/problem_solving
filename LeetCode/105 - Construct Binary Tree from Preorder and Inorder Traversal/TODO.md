@@ -1,0 +1,1 @@
+Try using Swift ArraySlice.
