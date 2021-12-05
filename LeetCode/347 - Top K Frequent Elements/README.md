@@ -1,29 +1,17 @@
-# solve1.cc
+# solve1.cc(Use sort)
 
-Use sort
-
-20 / 20 test cases passed.
-Status: Accepted
 Runtime: 24 ms
 
 Your runtime beats 42.72 % of cpp submissions.
 
-# solve2.cc
+# solve2.cc (Use priority queue)
 
-Use priority queue
-
-20 / 20 test cases passed.
-Status: Accepted
 Runtime: 24 ms
 
 Your runtime beats 42.72 % of cpp submissions.
 
-# solve3.cc
+# solve3.cc (Use bucket sort)
 
-Use bucket sort
-
-20 / 20 test cases passed.
-Status: Accepted
 Runtime: 25 ms
 
 Your runtime beats 34.83 % of cpp submissions.
@@ -32,9 +20,19 @@ Your runtime beats 34.83 % of cpp submissions.
 
 Use solution 1 but changing ordered map to unordered map
 
-20 / 20 test cases passed.
-Status: Accepted
 Runtime: 19 ms
 
 Your runtime beats 99.60 % of cpp submissions.
 
+
+# solve1.swift (Sort)
+
+Runtime: 80 ms, faster than 77.27% of Swift online submissions for Top K Frequent Elements.
+
+Memory Usage: 15.9 MB, less than 26.89% of Swift online submissions for Top K Frequent Elements.
+
+# solve2.swift (PQ)
+
+Runtime: 868 ms, faster than 5.68% of Swift online submissions for Top K Frequent Elements.
+
+Memory Usage: 15.9 MB, less than 26.89% of Swift online submissions for Top K Frequent Elements.
