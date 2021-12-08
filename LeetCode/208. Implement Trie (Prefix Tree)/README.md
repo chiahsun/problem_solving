@@ -6,7 +6,7 @@ Memory Usage: 21 MB, less than 64.91% of Swift online submissions for Implement 
 
 # solve2.swift
 
-Runtime: 329 ms, faster than 26.32% of Swift online submissions for Implement Trie (Prefix Tree).
+Runtime: 273 ms, faster than 35.09% of Swift online submissions for Implement Trie (Prefix Tree).
 
-Memory Usage: 20.8 MB, less than 77.78% of Swift online submissions for Implement Trie (Prefix Tree).
+Memory Usage: 20.7 MB, less than 77.78% of Swift online submissions for Implement Trie (Prefix Tree).
 

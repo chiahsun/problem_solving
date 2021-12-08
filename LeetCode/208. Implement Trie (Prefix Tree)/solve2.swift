@@ -1,35 +1,6 @@
 class TrieNode {
     var d: [Character: TrieNode] = [:]
     var end = false
-    
-    static func put(_ p: TrieNode, _ word: String, _ pos: String.Index) {
-        var p = p
-        var pos = pos
-        while pos != word.endIndex {
-            let c = word[pos]
-            if p.d[c] == nil { p.d[c] = TrieNode() }
-            p = p.d[c]!
-            pos = word.index(after: pos)        
-        }
-        p.end = true
-    }
-    
-    static func get(_ p: TrieNode, _ word: String, _ pos: String.Index) -> TrieNode? {
-        var p = p
-        var pos = pos
-        
-        while pos != word.endIndex {
-            let c = word[pos]
-            if let next = p.d[c] {
-                p = next
-                pos = word.index(after: pos)
-            } else {
-                return nil
-            }
-        }
-        
-        return p
-    }
 }
 
 class Trie {
@@ -37,16 +8,45 @@ class Trie {
     
     init() { }
     
-    func insert(_ word: String) { TrieNode.put(root, word, word.startIndex) }
+    func insert(_ word: String) { 
+        var p = root
+        var pos = word.startIndex
+        
+        repeat {
+            let c = word[pos]
+            if p.d[c] == nil { p.d[c] = TrieNode() }
+            p = p.d[c]!
+            pos = word.index(after: pos)        
+        } while pos != word.endIndex
+        
+        p.end = true 
+    }
     
     func search(_ word: String) -> Bool {
-        guard let lastNode = TrieNode.get(root, word, word.startIndex) else { return false }
+        guard let lastNode = find(word) else { return false }
         return lastNode.end
     }
     
     func startsWith(_ prefix: String) -> Bool {
-        guard let lastNode = TrieNode.get(root, prefix, prefix.startIndex) else { return false }
+        guard let lastNode = find(prefix) else { return false }
         return true
+    }
+         
+    private func find(_ word: String) -> TrieNode? {
+        var p = root
+        var pos = word.startIndex
+        
+        repeat {
+            let c = word[pos]
+            if let next = p.d[c] {
+                p = next
+                pos = word.index(after: pos)
+            } else {
+                return nil
+            }
+        } while pos != word.endIndex
+        
+        return p
     }
 }
 
