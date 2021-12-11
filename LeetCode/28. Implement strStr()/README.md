@@ -10,8 +10,14 @@ Runtime: 8 ms, faster than 98.51% of Swift online submissions for Implement strS
 
 Memory Usage: 15.4 MB, less than 9.82% of Swift online submissions for Implement strStr().
 
+# solve3.swift(Clean version of 2)
+
+Runtime: 8 ms, faster than 98.23% of Swift online submissions for Implement strStr().
+
+Memory Usage: 15.3 MB, less than 10.03% of Swift online submissions for Implement strStr().
 
 # Reference
 
 [Substring Search](https://algs4.cs.princeton.edu/lectures/keynote/53SubstringSearch.pdf)
+
 
