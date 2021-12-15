@@ -20,4 +20,9 @@ Memory Usage: 15.3 MB, less than 10.03% of Swift online submissions for Implemen
 
 [Substring Search](https://algs4.cs.princeton.edu/lectures/keynote/53SubstringSearch.pdf)
 
+# solve4.swift(Suffix array with Manber-Myers algorithms)
+
+Runtime: 88 ms, faster than 81.14% of Swift online submissions for Implement strStr().
+
+Memory Usage: 15.9 MB, less than 5.14% of Swift online submissions for Implement strStr().
 
