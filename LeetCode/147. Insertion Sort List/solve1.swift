@@ -14,21 +14,22 @@ class Solution {
         
         var dummyHead = ListNode(0, head)
         var orderedTail = head
+        
         while let tail = orderedTail.next {
-            var p = dummyHead
-            
-            while let next = p.next {
-                if next === tail {
-                    orderedTail = tail
-                    break
-                } else if next.val > tail.val {
-                    let tailNext = tail.next
-                    p.next = tail
-                    tail.next = next
-                    orderedTail.next = tailNext
-                    break
-                }
-                p = next
+            if tail.val < orderedTail.val {
+                var p = dummyHead
+                while let next = p.next {
+                    if next.val > tail.val {
+                        let tailNext = tail.next
+                        p.next = tail
+                        tail.next = next
+                        orderedTail.next = tailNext
+                        break
+                    }
+                    p = next
+                }         
+            } else {
+                orderedTail = tail
             }
         }
         
