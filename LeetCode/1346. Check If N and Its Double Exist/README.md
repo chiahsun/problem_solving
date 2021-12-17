@@ -1,0 +1,12 @@
+# solve1.swift
+
+Runtime: 55 ms, faster than 5.26% of Swift online submissions for Check If N and Its Double Exist.
+
+Memory Usage: 14.1 MB, less than 53.51% of Swift online submissions for Check If N and Its Double Exist.
+
+# solve2.swift
+
+Runtime: 39 ms, faster than 7.89% of Swift online submissions for Check If N and Its Double Exist.
+
+Memory Usage: 13.8 MB, less than 94.74% of Swift online submissions for Check If N and Its Double Exist.
+
