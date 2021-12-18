@@ -27,3 +27,9 @@ Your runtime beats 36.29 % of python submissions.
 Runtime: 12 ms, faster than 91.38% of Swift online submissions for Reverse Linked List.
 
 Memory Usage: 14.8 MB, less than 69.89% of Swift online submissions for Reverse Linked List.
+
+# solve2.swift
+
+Runtime: 23 ms, faster than 10.57% of Swift online submissions for Reverse Linked List.
+
+Memory Usage: 14.6 MB, less than 87.31% of Swift online submissions for Reverse Linked List.
