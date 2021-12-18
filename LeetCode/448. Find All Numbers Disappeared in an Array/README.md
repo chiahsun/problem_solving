@@ -38,3 +38,10 @@ Runtime: 384 ms, faster than 98.09% of Swift online submissions for Find All Num
 
 Memory Usage: 16.6 MB, less than 39.49% of Swift online submissions for Find All Numbers Disappeared in an Array.
 
+
+# solve3.swift(Sort and two pointers)
+
+Runtime: 470 ms, faster than 34.06% of Swift online submissions for Find All Numbers Disappeared in an Array.
+
+Memory Usage: 16.3 MB, less than 72.46% of Swift online submissions for Find All Numbers Disappeared in an Array.
+
