@@ -1,0 +1,5 @@
+# solve1.swift
+
+Runtime: 4 ms, faster than 87.85% of Swift online submissions for Decode String.
+
+Memory Usage: 14.1 MB, less than 86.92% of Swift online submissions for Decode String.
