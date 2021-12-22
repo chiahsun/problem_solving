@@ -21,3 +21,9 @@ Your runtime beats 28.78% of pythonsubmissions.
 Runtime: 80 ms, faster than 95.74% of Swift online submissions for Range Sum Query - Immutable.
 
 Memory Usage: 15.5 MB, less than 12.77% of Swift online submissions for Range Sum Query - Immutable.
+
+# solve2.swift (Binary indexed tree)
+
+Runtime: 80 ms, faster than 95.92% of Swift online submissions for Range Sum Query - Immutable.
+
+Memory Usage: 15.3 MB, less than 14.29% of Swift online submissions for Range Sum Query - Immutable.
