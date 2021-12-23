@@ -2,9 +2,12 @@
 
 [Use DFS with topological sort](https://www.youtube.com/watch?v=NyP3TKcruO8&index=68&list=PLRdD1c6QbAqJn0606RlOR6T3yUqFWKwmX)
 
-44 / 44 test cases passed.
-Status: Accepted
 Runtime: 56 ms
 
 Your runtime beats 98.45 % of python3 submissions.
 
+# solve1.swift
+
+Runtime: 76 ms, faster than 96.92% of Swift online submissions for Course Schedule II.
+
+Memory Usage: 14.2 MB, less than 93.85% of Swift online submissions for Course Schedule II.
