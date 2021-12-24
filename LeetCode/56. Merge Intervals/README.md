@@ -20,3 +20,9 @@ Runtime: 56 ms, faster than 73.06% of Swift online submissions for Merge Interva
 
 Memory Usage: 14.9 MB, less than 49.59% of Swift online submissions for Merge Intervals.
 
+# solve2.swift
+
+Runtime: 52 ms, faster than 95.07% of Swift online submissions for Merge Intervals.
+
+Memory Usage: 15 MB, less than 14.32% of Swift online submissions for Merge Intervals.
+
