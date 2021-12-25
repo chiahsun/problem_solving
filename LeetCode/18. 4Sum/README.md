@@ -1,4 +1,4 @@
-# solve1.swift(n^3 log(n))
+# solve1.swift($n^3 log(n)$)
 
 Runtime: 32 ms, faster than 57.29% of Swift online submissions for 4Sum.
 
