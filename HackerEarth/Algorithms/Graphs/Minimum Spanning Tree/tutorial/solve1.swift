@@ -24,47 +24,6 @@ for _ in 0..<M {
     edges.append(Edge(u: u, v: v, w: w))
 }
 
-//    0
-//  1   2
-// 3 4
-class MinHeap {
-    var A:[Edge]
-    init(_ edges: [Edge]) { 
-        self.A = edges
-        for i in stride(from: 0, to: A.count, by: 1) {
-            swimUp(i)
-        }
-    }
-
-    func swimUp(_ pos: Int) {
-        var pos = pos
-        while pos > 0, case let parent = (pos-1)/2, A[pos] < A[parent] {
-            A.swapAt(parent, pos)
-            pos = parent
-        }
-    }
-
-    func popMin() -> Edge {
-        var minEdge = A[0]
-        let lastPos = A.count-1
-        if lastPos != 0 { A.swapAt(0, lastPos) }
-        A.removeLast()
-        var pos = 0
-        while case let leftPos = 2*pos+1, leftPos < A.count {
-            var minPos = pos
-            if A[leftPos] < A[pos] { minPos = leftPos }
-            if case let rightPos = 2*pos+2, rightPos < A.count, A[rightPos] < A[minPos] { minPos = rightPos }
-            if minPos != pos {
-                A.swapAt(minPos, pos)
-                pos = minPos
-            } else {
-                break
-            }
-        }
-        return minEdge
-    }
-}
-
 class UnionFind {
     var id: [Int] 
     var count: [Int]
@@ -91,13 +50,13 @@ class UnionFind {
     }
 }
 
-var mh = MinHeap(edges)
+edges.sort()
 var E = 0
 var ans = 0
 var uf = UnionFind(N)
 
-while E+1 < N {
-    let e = mh.popMin()
+for e in edges {
+    if E+1 >= N { break }
     if uf.findRoot(e.u) != uf.findRoot(e.v) {
         uf.makeUnion(e.u, e.v)
         ans += e.w

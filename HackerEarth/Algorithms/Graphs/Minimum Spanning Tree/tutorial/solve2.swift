@@ -15,52 +15,74 @@ struct Edge: Comparable {
     }
 }
 
-var edges: [Edge] = []
+var edges: [[Edge]] = Array(repeating: [], count: N)
 for _ in 0..<M {
     let params = readLine()!.split(separator: " ")
     let u = Int(params[0])!-1
     let v = Int(params[1])!-1
     let w = Int(params[2])!
-    edges.append(Edge(u: u, v: v, w: w))
+    let e = Edge(u: u, v: v, w: w)
+    edges[u].append(e)
+    edges[v].append(e)
 }
 
-class UnionFind {
-    var id: [Int] 
-    var count: [Int]
-    init(_ N: Int) { id = Array(0..<N); count = Array(repeating: 1, count: N) }
+//    0
+//  1   2
+// 3 4
+class MinHeap {
+    var A:[Edge] = []
 
-    func makeUnion(_ a: Int, _ b: Int) {
-        let ra = findRoot(a)
-        let rb = findRoot(b)
-        if ra != rb {
-            if count[ra] >= count[rb] { 
-                id[rb] = ra; count[ra] += count[rb]
-            } else {
-                id[ra] = rb; count[rb] += count[ra]
-            }
+    func add(_ edge: Edge) {
+        A.append(edge)
+        swimUp(A.count-1)
+    }
+
+    func swimUp(_ pos: Int) {
+        var pos = pos
+        while pos > 0, case let parent = (pos-1)/2, A[pos] < A[parent] {
+            A.swapAt(parent, pos)
+            pos = parent
         }
     }
 
-    func findRoot(_ a: Int) -> Int {
-        guard id[a] != a else { return a }
 
-        let root = findRoot(id[a])
-        id[a] = root
-        return root
+    func popMin() -> Edge {
+        var minEdge = A[0]
+        let lastPos = A.count-1
+        if lastPos != 0 { A.swapAt(0, lastPos) }
+        A.removeLast()
+        var pos = 0
+        while case let leftPos = 2*pos+1, leftPos < A.count {
+            var minPos = pos
+            if A[leftPos] < A[pos] { minPos = leftPos }
+            if case let rightPos = 2*pos+2, rightPos < A.count, A[rightPos] < A[minPos] { minPos = rightPos }
+            if minPos != pos {
+                A.swapAt(minPos, pos)
+                pos = minPos
+            } else {
+                break
+            }
+        }
+        return minEdge
     }
 }
 
-edges.sort()
 var E = 0
 var ans = 0
-var uf = UnionFind(N)
 
-for e in edges {
-    if E+1 >= N { break }
-    if uf.findRoot(e.u) != uf.findRoot(e.v) {
-        uf.makeUnion(e.u, e.v)
-        ans += e.w
+var mh = MinHeap()
+var visited = Array(repeating: false, count: N)
+visited[0] = true
+
+for e in edges[0] { mh.add(e) }
+
+while E+1 < N, case let minEdge = mh.popMin() {
+    if !visited[minEdge.u] || !visited[minEdge.v] {
+        let next = !visited[minEdge.u] ? minEdge.u : minEdge.v
+        visited[next] = true
+        ans += minEdge.w
         E += 1
+        for e in edges[next] { mh.add(e) }
     }
 }
 
