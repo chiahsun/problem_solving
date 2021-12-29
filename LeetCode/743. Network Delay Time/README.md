@@ -14,3 +14,13 @@ Memory Usage: 14.4 MB, less than 93.75% of Swift online submissions for Network 
 Runtime: 416 ms, faster than 85.94% of Swift online submissions for Network Delay Time.
 
 Memory Usage: 14.8 MB, less than 71.88% of Swift online submissions for Network Delay Time.
+
+# solve3.swift(Dijkstra's algorithm)
+
+Slower, not knowing why ...
+
+Runtime: 826 ms, faster than 15.63% of Swift online submissions for Network Delay Time.
+
+Memory Usage: 14.6 MB, less than 84.38% of Swift online submissions for Network Delay Time.
+
+[4.4 ShortestPaths - Dijkstra's algorithm](https://algs4.cs.princeton.edu/lectures/keynote/44ShortestPaths-2x2.pdf)
