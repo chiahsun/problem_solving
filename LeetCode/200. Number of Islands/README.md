@@ -9,3 +9,12 @@ Memory Usage: 16.9 MB, less than 43.45% of Swift online submissions for Number o
 Runtime: 244 ms, faster than 66.81% of Swift online submissions for Number of Islands.
 
 Memory Usage: 16.7 MB, less than 58.52% of Swift online submissions for Number of Islands.
+
+# solve3.swift(Union find)
+
+Much slower than DFS
+
+Runtime: 3475 ms, faster than 5.15% of Swift online submissions for Number of Islands.
+
+Memory Usage: 17.2 MB, less than 21.25% of Swift online submissions for Number of Islands.
+
