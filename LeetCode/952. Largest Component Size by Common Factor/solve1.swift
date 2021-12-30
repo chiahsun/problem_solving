@@ -6,19 +6,15 @@
 // 3 -> 6 15
 // 5 -> 15 35
 
-// 2 -> 2 4 6 12
-// 3 -> 3 6 12 21 39
-// 7 -> 7 21
-
-// 2 3 4 6 12 21
-// 1 3 1 3  3 21
+// 1 3 15 35
+// 1 1 5 35
+// 1 1 1 7
+// 1 1 1 1
 
 func getDivisor(_ a: Int) -> Int {
     guard a > 1 else { return a }
-    for i in [2, 3, 5] where a % i == 0 {
-        return i
-    }
-    var d = 7
+    if a % 2 == 0 { return 2 }
+    var d = 3
     while d*d <= a {
         if a % d == 0 { return d }
         d += 2
@@ -37,11 +33,12 @@ class Solution {
             s[cur] = cur
             numToPos[cur] = i
         }
+        
         var used = Array(repeating: false, count: N)
         var ans = 1
         
-        for usedPos in 0..<used.count where !used[usedPos] {
-            var q: [Int] = [usedPos]
+        for headPos in 0..<used.count where !used[headPos] {
+            var q: [Int] = [headPos]
             var curCnt = 0
             func addCount(_ curPos: Int) {
                 used[curPos] = true

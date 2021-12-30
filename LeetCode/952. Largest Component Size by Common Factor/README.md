@@ -6,7 +6,7 @@
 
 Brute force O(N^2) with union find would lead to TLE.
 
-Therefore, we use dynamic programming ideas here with a little math comprehension about divisor, prime here.
+Therefore, we use dynamic programming ideas here with a little math comprehension about divisor here.
 
 The algorithm would be O(M) where M is the total divisors for each number. However, we don't perform factorization but perform it implicitly. 
 
