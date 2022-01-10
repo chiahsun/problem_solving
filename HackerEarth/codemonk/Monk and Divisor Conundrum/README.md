@@ -4,7 +4,7 @@ Swift is too slow for this problem.
 
 Care about overflow.
 
-Brute force algorithm would cause TLE, we we need to leverage N < 200000.
+Brute force algorithm would cause TLE, so we need to leverage N < 200000.
  
 Time (sec)
 
