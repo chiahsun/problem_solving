@@ -1,5 +1,9 @@
-# Runtime
-[solve1.cc]
-16697058    1607    Chiahsun Cheng (chiahsun cheng)   Accepted  C++11   0.000   
+# solve1.cc
 
-[1] 0.000
+C++11   0.000   
+
+# solve2.cc
+
+Math solution. See note.md.
+
+C++11	0.000	0.000	3056
