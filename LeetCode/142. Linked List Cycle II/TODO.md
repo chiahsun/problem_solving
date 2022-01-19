@@ -15,3 +15,5 @@ A - A - A - A - A
 O + K = 2 + 4
 O + K + L = 2 + 4 + 6  
 ```
+
+TODO: Sketch the proof.
