@@ -1,10 +1,12 @@
-# solve1.sql
+# solve1.sql (`UNION`)
 
 Runtime 621 ms
 
 Beats 34.85%
 
 A bit of strange ...
+
+No `INTERSECT` to use.
 
 # If console is broken to run test
 
