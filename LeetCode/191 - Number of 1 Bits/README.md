@@ -23,3 +23,15 @@ Your runtime beats 2.41% of cpp submissions.
 Runtime: 0 ms, faster than 100.00% of Swift online submissions for Number of 1 Bits.
 
 Memory Usage: 13 MB, less than 97.71% of Swift online submissions for Number of 1 Bits.
+
+# solve1.py
+
+Runtime 73 ms Beats 7.69%
+
+Memory 13.9 MB Beats 49.61%
+
+# solve2.py ( n & n-1 to toggle last 1)
+
+Runtime 63 ms Beats 31.50%
+
+Memory 13.9 MB Beats 49.61%
