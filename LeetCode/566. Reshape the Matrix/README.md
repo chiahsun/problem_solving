@@ -11,3 +11,9 @@ Your runtime beats 100.00 % of golang submissions.
 Runtime: 84 ms, faster than 54.74% of Swift online submissions for Reshape the Matrix.
 
 Memory Usage: 14.2 MB, less than 70.53% of Swift online submissions for Reshape the Matrix.
+
+# solve1.py
+
+Runtime 114 ms Beats 82.8%
+
+Memory 14.7 MB Beats 80.67%
