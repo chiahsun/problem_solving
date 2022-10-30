@@ -10,11 +10,11 @@ Runtime: 476 ms
 
 Your runtime beats 3.51% of pythonsubmissions.
 
-# solve2.py
+# solve2.py (prefix sum)
 
-Runtime: 84 ms
+Runtime 84 ms Beats 93.50%
 
-Your runtime beats 28.78% of pythonsubmissions.
+Memory 17.8 MB Beats 10.81%
 
 # solve1.swift
 
