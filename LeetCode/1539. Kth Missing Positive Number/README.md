@@ -1,5 +1,5 @@
 # solve1.py (`bisect_right`)
 
-Runtime 126 ms Beats 28.44%
+Runtime 95 ms Beats 73.14%
 
-Memory 14.2 MB Beats 18.4%
+Memory 14.3 MB Beats 7.79%
