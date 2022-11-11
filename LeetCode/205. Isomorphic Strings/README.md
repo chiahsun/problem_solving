@@ -1,23 +1,17 @@
 # solve1.cc
 
-30 / 30 test cases passed.
-Status: Accepted
 Runtime: 8 ms
 
 Your runtime beats 67.75% of cppsubmissions.
 
-# solve.py
+# solve1.py
 
-30 / 30 test cases passed.
-Status: Accepted
 Runtime: 64 ms
 
 Your runtime beats 63.13% of pythonsubmissions.
 
 # solve2.py
 
-30 / 30 test cases passed.
-Status: Accepted
 Runtime: 44 ms
 
 Your runtime beats 98.12 % of python3 submissions.
@@ -26,9 +20,12 @@ Your runtime beats 98.12 % of python3 submissions.
 
 1-pass of solve2.py
 
-30 / 30 test cases passed.
-Status: Accepted
 Runtime: 44 ms
 
 Your runtime beats 98.12 % of python3 submissions.
 
+# solve4.py
+
+Runtime 75 ms Beats 63.57%
+
+Memory 14.3 MB Beats 46.22%
