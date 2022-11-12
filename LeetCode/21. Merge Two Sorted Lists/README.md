@@ -14,3 +14,14 @@ Runtime: 12 ms, faster than 87.91% of Swift online submissions for Merge Two Sor
 
 Memory Usage: 13.6 MB, less than 97.11% of Swift online submissions for Merge Two Sorted Lists.
 
+# solve1.py
+
+Runtime 78 ms Beats 33.4%
+
+Memory 13.8 MB Beats 79.78%
+
+# solve2.py
+
+Runtime 100 ms Beats 5.2%
+
+Memory 14 MB Beats 33.22%
