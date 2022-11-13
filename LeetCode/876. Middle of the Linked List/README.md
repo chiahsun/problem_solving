@@ -1,3 +1,7 @@
+# Tag
+
+`#linked list` `#two pointer`
+
 # solve1.swift
 
 Runtime: 4 ms, faster than 84.95% of Swift online submissions for Middle of the Linked List.
@@ -15,3 +19,11 @@ Memory Usage: 14 MB, less than 27.94% of Swift online submissions for Middle of 
 Runtime 55 ms Beats 53.67%
 
 Memory 13.7 MB Beats 95.84%
+
+# solve2.py
+
+Clean version of solve1.py
+
+Runtime 46 ms Beats 75.10%
+
+Memory 14 MB Beats 11.85%
