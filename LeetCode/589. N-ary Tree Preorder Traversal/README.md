@@ -1,9 +1,11 @@
 # solve1.py (Recursive)
 
-Runtime 118 ms
+Runtime 111 ms Beats 40.79%
 
-Beats 20.33%
+Memory 16 MB Beats 97.78%
 
-Memory 16.2 MB
+# solve2.py (Iterative)
 
-Beats 66.69%
+Runtime 81 ms Beats 74.97%
+
+Memory 16.1 MB Beats 66.44%
