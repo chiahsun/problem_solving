@@ -4,10 +4,10 @@ Your runtime beats 12.05% of cpp submissions.
 
 # solve2.cc
 
-27 / 27 test cases passed.
 Your runtime beats 12.05% of cpp submissions.
 
-o# solve3.cc
+# solve3.cc
+
 Your runtime beats 0.26% of cpp submissions
 
 # solve4.cc
@@ -29,3 +29,9 @@ Memory Usage: 15.2 MB, less than 11.60% of Swift online submissions for Lowest C
 Runtime: 120 ms, faster than 71.82% of Swift online submissions for Lowest Common Ancestor of a Binary Search Tree.
 
 Memory Usage: 15 MB, less than 41.44% of Swift online submissions for Lowest Common Ancestor of a Binary Search Tree.
+
+# solve1.py
+
+Runtime 198 ms Beats 26.35%
+
+Memory 18.6 MB Beats 97.55%
