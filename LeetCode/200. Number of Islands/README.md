@@ -18,3 +18,8 @@ Runtime: 3475 ms, faster than 5.15% of Swift online submissions for Number of Is
 
 Memory Usage: 17.2 MB, less than 21.25% of Swift online submissions for Number of Islands.
 
+# solve1.py (DFS)
+
+Runtime 316 ms Beats 92.35%
+
+Memory 16.4 MB Beats 66.21%
