@@ -15,3 +15,9 @@ Memory Usage: 13.9 MB, less than 94.03% of Swift online submissions for Multiply
 Runtime: 13 ms, faster than 72.39% of Swift online submissions for Multiply Strings.
 
 Memory Usage: 14 MB, less than 94.03% of Swift online submissions for Multiply Strings.
+
+# solve1.py
+
+Runtime 217 ms Beats 37.94%
+
+Memory 13.8 MB Beats 98.32%
