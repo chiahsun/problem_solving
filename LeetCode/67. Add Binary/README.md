@@ -21,3 +21,9 @@ Memory Usage: 14.1 MB, less than 80.71% of Swift online submissions for Add Bina
 Runtime: 7 ms, faster than 87.82% of Swift online submissions for Add Binary.
 
 Memory Usage: 14.2 MB, less than 65.48% of Swift online submissions for Add Binary.
+
+# solve2.py
+
+Runtime 75 ms Beats 21.83%
+
+Memory 13.9 MB Beats 26.10%
