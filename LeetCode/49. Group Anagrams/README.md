@@ -9,3 +9,9 @@ Memory Usage: 18.3 MB, less than 15.01% of Swift online submissions for Group An
 Runtime: 104 ms, faster than 74.80% of Swift online submissions for Group Anagrams.
 
 Memory Usage: 15.9 MB, less than 80.43% of Swift online submissions for Group Anagrams.
+
+# solve1.py
+
+Runtime 211 ms Beats 59.66%
+
+Memory 17.8 MB Beats 55.38%
