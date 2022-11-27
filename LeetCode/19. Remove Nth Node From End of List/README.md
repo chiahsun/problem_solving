@@ -26,3 +26,9 @@ Memory Usage: 13.6 MB, less than 90.76% of Swift online submissions for Remove N
 Runtime: 8 ms, faster than 67.33% of Swift online submissions for Remove Nth Node From End of List.
 
 Memory Usage: 13.8 MB, less than 80.20% of Swift online submissions for Remove Nth Node From End of List.
+
+# solve1.py
+
+Runtime 54 ms Beats 71.64%
+
+Memory 14 MB Beats 21.61%
