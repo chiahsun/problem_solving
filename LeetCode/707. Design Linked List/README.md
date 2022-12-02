@@ -9,3 +9,9 @@ Memory Usage: 14.5 MB, less than 60.49% of Swift online submissions for Design L
 Runtime: 140 ms, faster than 83.33% of Swift online submissions for Design Linked List.
 
 Memory Usage: 15.2 MB, less than 8.33% of Swift online submissions for Design Linked List.
+
+# solve1.py
+
+Runtime 436 ms Beats 46.77%
+
+Memory 14.9 MB Beats 29.11%
