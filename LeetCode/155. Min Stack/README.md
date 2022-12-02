@@ -34,3 +34,9 @@ Runtime: 64 ms, faster than 94.94% of Swift online submissions for Min Stack.
 
 Memory Usage: 15.4 MB, less than 36.24% of Swift online submissions for Min Stack.
 
+# solve3.py
+
+Runtime 62 ms Beats 93.40%
+
+Memory 18.1 MB Beats 41.1%
+
