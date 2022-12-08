@@ -18,3 +18,9 @@ Memory Usage: 40.1 MB, less than 99.44% of JavaScript online submissions for Lon
 Runtime: 16 ms, faster than 84.40% of Swift online submissions for Longest Substring Without Repeating Characters.
 
 Memory Usage: 14.8 MB, less than 10.12% of Swift online submissions for Longest Substring Without Repeating Characters.
+
+# solve1.py
+
+Runtime 71 ms Beats 88.49%
+
+Memory 14 MB Beats 51.2%
