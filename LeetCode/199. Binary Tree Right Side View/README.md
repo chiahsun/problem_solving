@@ -1,10 +1,10 @@
 # solve1.py
 
-DFS with level count
+DFS with depth 
 
-Runtime: 44 ms
+Runtime 32 ms Beats 95.9%
 
-Your runtime beats 95.34 % of python3 submissions.
+Memory 13.8 MB Beats 98.53%
 
 # solve1.swift
 
