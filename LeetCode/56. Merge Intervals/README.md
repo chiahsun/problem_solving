@@ -2,9 +2,7 @@
 
 Use sort
 
-Runtime: 16 ms
-
-Your runtime beats 61.42 % of cpp submissions.
+Runtime: 16 ms Your runtime beats 61.42 % of cpp submissions.
 
 # solve2.cc
 
@@ -26,3 +24,8 @@ Runtime: 52 ms, faster than 95.07% of Swift online submissions for Merge Interva
 
 Memory Usage: 15 MB, less than 14.32% of Swift online submissions for Merge Intervals.
 
+# solve1.py
+
+Runtime 363 ms Beats 38.72%
+
+Memory 18 MB Beats 86.1%
