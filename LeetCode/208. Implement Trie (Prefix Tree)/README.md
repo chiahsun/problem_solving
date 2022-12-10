@@ -10,3 +10,8 @@ Runtime: 273 ms, faster than 35.09% of Swift online submissions for Implement Tr
 
 Memory Usage: 20.7 MB, less than 77.78% of Swift online submissions for Implement Trie (Prefix Tree).
 
+# solve1.py
+
+Runtime 261 ms Beats 73.30%
+
+Memory 27.7 MB Beats 84.6%
