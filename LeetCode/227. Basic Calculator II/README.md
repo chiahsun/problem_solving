@@ -15,3 +15,11 @@ Memory 19 MB Beats 8.12%
 Runtime 627 ms Beats 5.24%
 
 Memory 16.3 MB Beats 31.31%
+
+# solve3.py
+
+https://leetcode.com/problems/basic-calculator-ii/solutions/893354/basic-calculator-ii/
+
+Runtime 594 ms Beats 6.7%
+
+Memory 16.3 MB Beats 31.31%
