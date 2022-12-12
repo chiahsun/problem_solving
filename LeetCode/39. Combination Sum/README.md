@@ -16,3 +16,8 @@ Runtime: 12 ms, faster than 95.44 % of Swift online submissions for Combination 
 
 Memory Usage: 14.1 MB, less than  48.77% of Swift online submissions for Combination Sum.
 
+# solve1.py
+
+Runtime 56 ms Beats 96.39%
+
+Memory 14 MB Beats 66.22%
