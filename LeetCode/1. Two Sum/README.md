@@ -55,3 +55,18 @@ Runtime 107 ms Beats 78.69%
 Memory 15.2 MB Beats 54.53%
 
 
+# solve4.py
+
+One pass with dict.
+
+Runtime 71 ms Beats 86.42%
+
+Memory 15.2 MB Beats 54.24%
+
+# solve5.py
+
+Sort + search from lo and hi.
+
+Runtime 66 ms Beats 90.59%
+
+Memory 14.8 MB Beats 99.68%
