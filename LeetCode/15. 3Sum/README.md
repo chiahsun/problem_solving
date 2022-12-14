@@ -15,3 +15,9 @@ Memory Usage: 18.2 MB, less than 14.76% of Swift online submissions for 3Sum.
 Runtime: 160 ms, faster than 64.85% of Swift online submissions for 3Sum.
 
 Memory Usage: 17.9 MB, less than 84.59% of Swift online submissions for 3Sum.
+
+# solve1.py
+
+Runtime 3340 ms Beats 26.33%
+
+Memory 19.1 MB Beats 8.44%
