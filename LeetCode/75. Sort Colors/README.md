@@ -19,3 +19,11 @@ A bit complicated to implement ...
 # solve1.swift
 
 Count number of 0, 1, 2 and assign them afterwards.
+
+# solve1.py
+
+Selection sort
+
+Runtime 30 ms Beats 97.77%
+
+Memory 13.8 MB Beats 64.64%
