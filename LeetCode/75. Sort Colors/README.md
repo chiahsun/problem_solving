@@ -27,3 +27,11 @@ Selection sort
 Runtime 30 ms Beats 97.77%
 
 Memory 13.8 MB Beats 64.64%
+
+# solve2.py
+
+Count
+
+Runtime 36 ms Beats 91.34%
+
+Memory 13.8 MB Beats 97.71%
