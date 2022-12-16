@@ -21,3 +21,11 @@ Memory Usage: 18.3 MB, less than 55.17% of Swift online submissions for Sort an 
 # Reference
 
 [String sort](https://algs4.cs.princeton.edu/lectures/keynote/51StringSorts-2x2.pdf)
+
+# solve1.py
+
+Heap sort See: https://leetcode.com/explore/learn/card/sorting/694/comparison-based-sorts/4436/
+
+Runtime 3003 ms Beats 57.96%
+
+Memory 21.3 MB Beats 96.24%
