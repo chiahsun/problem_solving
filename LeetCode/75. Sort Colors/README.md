@@ -43,3 +43,11 @@ Swap only.
 Runtime 37 ms Beats 88.65%
 
 Memory 14 MB Beats 15.80%
+
+# solve4.py
+
+Count sort idea
+
+Runtime 27 ms Beats 99.15%
+
+Memory 13.8 MB Beats 97.71%
