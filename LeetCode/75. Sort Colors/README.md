@@ -35,3 +35,11 @@ Count
 Runtime 36 ms Beats 91.34%
 
 Memory 13.8 MB Beats 97.71%
+
+# solve3.py
+
+Swap only.
+
+Runtime 37 ms Beats 88.65%
+
+Memory 14 MB Beats 15.80%
