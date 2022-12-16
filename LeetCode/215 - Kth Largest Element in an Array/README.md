@@ -24,9 +24,17 @@ Runtime: 44 ms, faster than 78.90% of Swift online submissions for Kth Largest E
 
 Memory Usage: 14.1 MB, less than 88.44% of Swift online submissions for Kth Largest Element in an Array.
 
-
 # solve2.swift (Priority queue)
 
 Runtime: 140 ms, faster than 8.09% of Swift online submissions for Kth Largest Element in an Array.
 
 Memory Usage: 14.3 MB, less than 58.09% of Swift online submissions for Kth Largest Element in an Array.
+
+
+# solve1.py
+
+Heap sort
+
+Runtime 1704 ms Beats 27.57%
+
+Memory 27.1 MB Beats 87.52%
