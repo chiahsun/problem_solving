@@ -22,9 +22,14 @@ Runtime: 3 ms, faster than 84.82% of Swift online submissions for Backspace Stri
 
 Memory Usage: 13.8 MB, less than 94.64% of Swift online submissions for Backspace String Compare.
 
-
 # solve1.py
 
 Runtime 45 ms Beats 76.44%
 
 Memory 14 MB Beats 23.91%
+
+# solve2.py
+
+Runtime 35 ms Beats 86.60%
+
+Memory 13.9 MB Beats 73.38%
