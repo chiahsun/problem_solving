@@ -36,3 +36,11 @@ Memory Usage: 15.9 MB, less than 26.89% of Swift online submissions for Top K Fr
 Runtime: 868 ms, faster than 5.68% of Swift online submissions for Top K Frequent Elements.
 
 Memory Usage: 15.9 MB, less than 26.89% of Swift online submissions for Top K Frequent Elements.
+
+# solve1.py
+
+Sort
+
+Runtime 230 ms Beats 51.98%
+
+Memory 18.5 MB Beats 98.97%
