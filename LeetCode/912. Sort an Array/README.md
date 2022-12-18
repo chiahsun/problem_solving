@@ -29,3 +29,19 @@ Heap sort See: https://leetcode.com/explore/learn/card/sorting/694/comparison-ba
 Runtime 3003 ms Beats 57.96%
 
 Memory 21.3 MB Beats 96.24%
+
+# solve2.py
+
+Idea similar to quick sort
+
+Runtime 2998 ms Beats 56.81%
+
+Memory 21.7 MB Beats 75.65%
+
+# solve3.py
+
+Care about duplciate keys for solve2 version. Note the change from <= to <.
+
+Runtime 2096 ms Beats 69.38%
+
+Memory 21.3 MB Beats 96.21%
