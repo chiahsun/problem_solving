@@ -33,12 +33,13 @@ class Solution:
             a, b, w = e[0]-1, e[1]-1, e[2]
             q.put((w, (a, b)))
             
-            
-        uf, res = UF(A), 0
-        while not q.empty():
+        uf, res, ne = UF(A), 0, 0
+        while not q.empty() and ne < A-1:
             top = q.get()
             w, a, b = top[0], top[1][0], top[1][1]
             if not uf.is_same_union(a, b):
                 res += w
+                ne += 1
                 uf.make_union(a, b)
         return res
+
