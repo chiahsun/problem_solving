@@ -15,3 +15,9 @@ Memory Usage: 14.8 MB, less than 47.15% of Swift online submissions for Minimum 
 Runtime: 44 ms, faster than 100.00% of Swift online submissions for Minimum Size Subarray Sum.
 
 Memory Usage: 14.9 MB, less than 18.70% of Swift online submissions for Minimum Size Subarray Sum.
+
+# solve1.py
+
+Runtime 266 ms Beats 90.45%
+
+Memory 27.1 MB Beats 89.2%
