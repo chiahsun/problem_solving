@@ -8,5 +8,8 @@ https://www.geeksforgeeks.org/ford-fulkerson-algorithm-for-maximum-flow-problem/
 
 Note that this problem says "denoting an undirected edge from x to y with a flow capacity of z"; therefore, we nned to change the definition of the residual capacity.
 
-Correct Answer.Correct Answer
 Execution Time:0.03
+
+# solve2.py
+
+Total Time Taken: 0.02
