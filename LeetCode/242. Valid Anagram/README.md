@@ -19,3 +19,9 @@ Memory 15.6 MB Beats 11.75%
 Runtime 52 ms Beats 92.41%
 
 Memory 14.5 MB Beats 34.99%
+
+# solve3.py (`defaultdict`)
+
+Runtime 41 ms Beats 96.90%
+
+Memory 14.4 MB Beats 97.32%
