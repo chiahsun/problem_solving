@@ -45,3 +45,31 @@ Care about duplciate keys for solve2 version. Note the change from <= to <.
 Runtime 2096 ms Beats 69.38%
 
 Memory 21.3 MB Beats 96.21%
+
+# solve4.py
+
+3-way quick sort.
+
+Runtime 2062 ms Beats 70.34%
+
+Memory 21.3 MB Beats 91.51%
+
+# solve5.py
+
+solve4 add insertion sort cutoff
+
+Runtime 1937 ms Beats 75.9%
+
+Memory 21.4 MB Beats 91.51%
+
+Note that the runtime for quick sort differs each time each it's randomized.
+
+# solve6.py
+
+3-way quick sort.
+
+Why mem high ...
+
+Runtime 2239 ms Beats 61.78%
+
+Memory 33.1 MB Beats 5.31%
