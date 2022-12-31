@@ -6,8 +6,7 @@
 
 Use GCD.
 
-Runtime 32 ms Beats 94.31%
+Runtime 28 ms Beats 96.80%
 
-Memory 13.9 MB Beats 63.70%
-
+Memory 14 MB Beats 55.69%
 
