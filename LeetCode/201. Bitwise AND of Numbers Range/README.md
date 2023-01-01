@@ -1,4 +1,4 @@
-Common prefix of two number in binary form.
+Basic idea is to get Common prefix of two number in binary form.
 
 # solve1.swift
 
@@ -23,3 +23,9 @@ Memory 13.9 MB Beats 24.94%
 Runtime 54 ms Beats 94.68%
 
 Memory 13.8 MB Beats 70.33%
+
+# solve4.py
+
+Runtime 54 ms Beats 94.68%
+
+Memory 13.9 MB Beats 70.33%
