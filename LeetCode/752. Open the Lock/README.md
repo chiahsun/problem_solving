@@ -2,8 +2,6 @@
 
 Use BFS. Integer tuple encoding
 
-43 / 43 test cases passed.
-Status: Accepted
 Runtime: 1184 ms
 
 Your runtime beats 14.49 % of python3 submissions.
@@ -12,8 +10,6 @@ Your runtime beats 14.49 % of python3 submissions.
 
 Use character encoding
 
-43 / 43 test cases passed.
-Status: Accepted
 Runtime: 1480 ms
 
 Your runtime beats 8.69 % of python3 submissions.
@@ -22,8 +18,6 @@ Your runtime beats 8.69 % of python3 submissions.
 
 No need to use distance map. Use queue swap trick.
 
-43 / 43 test cases passed.
-Status: Accepted
 Runtime: 904 ms
 
 Your runtime beats 33.33 % of python3 submissions.
@@ -32,8 +26,6 @@ Your runtime beats 33.33 % of python3 submissions.
 
 Early return if next equals target
 
-43 / 43 test cases passed.
-Status: Accepted
 Runtime: 744 ms
 
 Your runtime beats 68.12 % of python3 submissions.
@@ -42,8 +34,6 @@ Your runtime beats 68.12 % of python3 submissions.
 
 Ue yield for cleaner code
 
-43 / 43 test cases passed.
-Status: Accepted
 Runtime: 784 ms
 
 Your runtime beats 52.17 % of python3 submissions.
@@ -52,8 +42,6 @@ Your runtime beats 52.17 % of python3 submissions.
 
 Enumerate is faster than range. [SO](https://stackoverflow.com/questions/4852944/what-is-faster-for-loop-using-enumerate-or-for-loop-using-xrange-in-python?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
 
-43 / 43 test cases passed.
-Status: Accepted
 Runtime: 676 ms
 
 Your runtime beats 79.71 % of python3 submissions.
@@ -65,9 +53,15 @@ Change string concat method which is faster.(+ is faster than "".join) [SO](http
 ("".join is O(n) I think and "+" should be O(n^2)) (Or changed?)
 
 
-43 / 43 test cases passed.
-Status: Accepted
 Runtime: 620 ms
 
 Your runtime beats 84.06 % of python3 submissions.
 
+
+# solve8.py
+
+A* search
+
+Runtime 388 ms Beats 97.12%
+
+Memory 15.5 MB Beats 18.40%
