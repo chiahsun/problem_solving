@@ -27,3 +27,9 @@ Memory Usage: 23.9 MB, less than 56.25% of Swift online submissions for Minimum 
 Runtime: 1448 ms, faster than 50.00% of Swift online submissions for Minimum Number of Vertices to Reach All Nodes.
 
 Memory Usage: 23.8 MB, less than 75.00% of Swift online submissions for Minimum Number of Vertices to Reach All Nodes.
+
+# solve1.py
+
+Runtime 1115 ms Beats 99.82%
+
+Memory 52.6 MB Beats 33.85%
