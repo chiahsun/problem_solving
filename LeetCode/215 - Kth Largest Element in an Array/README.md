@@ -38,3 +38,19 @@ Heap sort
 Runtime 1704 ms Beats 27.57%
 
 Memory 27.1 MB Beats 87.52%
+
+# solve2.py
+
+Quick select
+
+Runtime 1894 ms Beats 21.69%
+
+Memory 27.1 MB Beats 64.12%
+
+# solve3.py
+
+Quick select but variant of parition using hi as pivot.
+
+Runtime 1562 ms Beats 30.91%
+
+Memory 27.1 MB Beats 64.12%
