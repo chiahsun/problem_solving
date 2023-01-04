@@ -54,3 +54,11 @@ Quick select but variant of parition using hi as pivot.
 Runtime 1562 ms Beats 30.91%
 
 Memory 27.1 MB Beats 64.12%
+
+# solve4.py
+
+Quick select with 3-way partitioning.
+
+Runtime 2140 ms Beats 18.79%
+
+Memory 27.1 MB Beats 64.12%
