@@ -1,5 +1,5 @@
 # solve1.py
 
-Runtime 2466 ms Beats 34.76%
+Runtime 1038 ms Beats 73.12%
 
-Memory 28.1 MB Beats 82.79%
+Memory 28.1 MB Beats 96.23%
