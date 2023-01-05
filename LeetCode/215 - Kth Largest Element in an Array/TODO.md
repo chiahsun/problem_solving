@@ -9,3 +9,9 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/257587/p
 https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/1019513/python-quickselect-average-o-n-explained/
 
 
+# TODO
+
+https://www.geeksforgeeks.org/quickselect-algorithm/
+
+
+https://www.geeksforgeeks.org/kth-smallest-largest-element-in-unsorted-array-worst-case-linear-time/
