@@ -11,3 +11,9 @@ Runtime: 56 ms Your runtime beats 22.39% of pythonsubmissions.
 Runtime 77 ms Beats 25.12%
 
 Memory 13.8 MB Beats 88.40%
+
+# solve3.py
+
+Runtime 77 ms Beats 19.63%
+
+Memory 14 MB Beats 11.4%
