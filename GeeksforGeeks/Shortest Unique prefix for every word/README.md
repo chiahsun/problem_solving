@@ -2,3 +2,7 @@ https://practice.geeksforgeeks.org/problems/shortest-unique-prefix-for-every-wor
 
 TLE for python. Maybe try other language?
 
+
+Similar problem for 
+https://www.interviewbit.com/problems/shortest-unique-prefix/
+works.
