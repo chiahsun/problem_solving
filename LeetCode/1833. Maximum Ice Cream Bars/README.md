@@ -15,3 +15,9 @@ Memory 28.7 MB Beats 17.54%
 Runtime 1647 ms Beats 43.45%
 
 Memory 28.4 MB Beats 17.54%
+
+# solve4.py (`Counter`)
+
+Runtime 2159 ms Beats 26.70%
+
+Memory 29.8 MB Beats 17.54%
