@@ -17,3 +17,9 @@ Memory 13.8 MB Beats 88.40%
 Runtime 77 ms Beats 19.63%
 
 Memory 14 MB Beats 11.4%
+
+# solve4.py (`sort`)
+
+Runtime 61 ms Beats 46.45%
+
+Memory 13.8 MB Beats 87.23%
