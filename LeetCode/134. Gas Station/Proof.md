@@ -26,7 +26,7 @@ All of them >=0, so start = 3 is valid.
 
 It is easy to show that no solution exists if sum(d) < 0, since we pick any position as start, sum(d[start:start]) < 0 which definitly violate (*). 
 
-Second, we show that if sum(d) >= 0, then solution exists and the algorithm follows the concept.
+Second, we show that if sum(d) >= 0, then a solution exists and the algorithm follows the concept.
 
 ```
 a          b     c
@@ -63,19 +63,13 @@ d[e:f] + d[a,b] > 0
 d[e:f] + d[a, b] + d[b,c] > 0
 d[e:f] + d[a, b] + d[b,c] + d[c, e] = 0
 
-
-
 Therefore, the algorithm is that is prefix sum is negative, we simply drop it, if current number is positive, we set it as the possible start and try to add to some point.
 
 If the prefix sum is always positive, then the picked number is the answer; otherwise, there must be another number(by our proof above) and start from that number, it sum up to the end equals to the absolute value of prefix sum (which is negative) before such number and such number is next candidate. Since the process cannot go indefinitely, it must exists such number.
 
+For sum(d) >0 case, it follows  the same reasoning as sum(d) = 0.
 
-
-For sum(d) >0 case, it's the same as sum(d) = 0 case.
-
-
-
-Example.
+**Example**
 
 [1, -4, 3, -2, -2, 1, 1, 1, 1]
 
@@ -101,12 +95,12 @@ Notice that 1+(-4)+3+(-2)+(-2) = -4 and 1 + 1 + 1 + 1 = |-4| = 4. If there exist
 
 1+1+1+1+1
 
-1+1+1+1+1+(-4)
+1+1+1+1+1+(-4) >= 0
 
-1+1+1+1+1+(-4)+3
+1+1+1+1+1+(-4)+3 >- 0
 
-1+1+1+1+1+(-4)+3+(-2)
+1+1+1+1+1+(-4)+3+(-2) >= 0
 
-1+1+1+1+1+(-4)+3+(-2)+(-2) would all >0 
+1+1+1+1+1+(-4)+3+(-2)+(-2) >= 0
 
-since 1 + 1 + 1 + 1 = 4 >= any of the part negative prefix sum since it is the absolute value of all the negative prefix sum.
+"1 + 1 + 1 + 1 = 4 >= any of the part negative prefix sum" simply follows from the fact that  it is the absolute value of all the negative prefix sum.
