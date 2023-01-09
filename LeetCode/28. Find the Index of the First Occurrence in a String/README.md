@@ -42,6 +42,12 @@ Runtime 64 ms Beats 25.29%
 
 Memory 13.9 MB Beats 66.67%
 
+# solve5.py
+
+Runtime 28 ms Beats 94.33%
+
+Memory 13.9 MB Beats 16.49%
+
 # Reference
 
 [Substring Search](https://algs4.cs.princeton.edu/lectures/keynote/53SubstringSearch.pdf)
