@@ -1,6 +1,6 @@
 # Tag
 
-`#sort` `#line sweep` `#greedy` `#classical`
+`#sort` `#line sweep` `#greedy` `#classic`
 
 # solve1.py
 

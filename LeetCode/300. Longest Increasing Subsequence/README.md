@@ -1,6 +1,6 @@
 # Tag
 
-`#classical` `#longest increasing subsequence`
+`#classic` `#longest increasing subsequence`
 
 # solve1.swift
 
