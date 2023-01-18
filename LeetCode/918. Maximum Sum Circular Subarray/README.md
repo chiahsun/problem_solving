@@ -23,3 +23,11 @@ A total run includes other max positive sum or max negative sum.
 Runtime 460 ms Beats 98.25%
 
 Memory 19 MB Beats 43.34%
+
+# solve2.py
+
+Prefix and suffix sum
+
+Runtime 633 ms Beats 50.58%
+
+Memory 19.4 MB Beats 8.98%
