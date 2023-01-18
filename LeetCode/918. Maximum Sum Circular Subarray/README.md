@@ -16,3 +16,10 @@ Runtime: 456 ms, faster than 97.30% of Swift online submissions for Maximum Sum 
 
 Memory Usage: 14.8 MB, less than 89.19% of Swift online submissions for Maximum Sum Circular Subarray.
 
+# solve1.py
+
+A total run includes other max positive sum or max negative sum.
+
+Runtime 460 ms Beats 98.25%
+
+Memory 19 MB Beats 43.34%
