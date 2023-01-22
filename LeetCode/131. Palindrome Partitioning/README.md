@@ -10,6 +10,16 @@ Memory Usage: 29.9 MB, less than 87.81% of Swift online submissions for Palindro
 
 # solve1.py
 
+Backtracking only
+
 Runtime 1772 ms Beats 19.37%
 
 Memory 30.5 MB Beats 21.21%
+
+# solve2.py
+
+Add dp
+
+Runtime 1617 ms Beats 25.20%
+
+Memory 30.5 MB Beats 28.22%
