@@ -23,3 +23,11 @@ Add dp
 Runtime 1617 ms Beats 25.20%
 
 Memory 30.5 MB Beats 28.22%
+
+# solve3.py
+
+Dp can be built during backtracking.
+
+Runtime 674 ms Beats 77.30%
+
+Memory 30.3 MB Beats 47.4%
