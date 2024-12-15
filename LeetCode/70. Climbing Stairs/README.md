@@ -13,3 +13,10 @@ Memory Usage: 13.9 MB, less than 48.43% of Swift online submissions for Climbing
 Runtime 65 ms Beats 13.3%
 
 Memory 14 MB Beats 12.23%
+
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 147.12 MB Beats 79.00%
+
