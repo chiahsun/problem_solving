@@ -18,6 +18,13 @@ Runtime 41 ms Beats 84.19%
 
 Memory 13.9 MB Beats 61.51%
 
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 152.32 MB Beats 6.56%
+
+
 # TODO
 
 iteration

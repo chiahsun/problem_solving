@@ -13,3 +13,10 @@ Memory Usage: 14.7 MB, less than 17.80% of Swift online submissions for Path Sum
 Runtime 72 ms Beats 72.71%
 
 Memory 15 MB Beats 57.17%
+
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 148.38 MB Beats 72.22%
+

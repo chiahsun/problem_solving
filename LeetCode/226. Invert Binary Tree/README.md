@@ -14,3 +14,10 @@ Memory Usage: 13.9 MB, less than 87.63% of Swift online submissions for Invert B
 Runtime 50 ms Beats 68.85%
 
 Memory 13.9 MB Beats 58.29%
+
+# solve1.py
+
+Runtime 0 ms Beats 100.00%
+
+Memory 152.42 MB Beats 5.13%
+

@@ -18,6 +18,13 @@ Runtime 96 ms Beats 60.15%
 
 Memory 14.7 MB Beats 82.49%
 
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 147.75 MB Beats 82.46%
+
+
 # Tag
 
 ```

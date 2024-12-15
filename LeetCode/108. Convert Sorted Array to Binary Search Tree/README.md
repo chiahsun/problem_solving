@@ -15,3 +15,9 @@ Memory Usage: 14.6 MB, less than 86.50% of Swift online submissions for Convert 
 Runtime 203 ms Beats 5.35%
 
 Memory 15.6 MB Beats 32.86%
+
+# solve1.dart
+
+Runtime 1 ms Beats 92.11%
+
+Memory 152.52 MB Beats 7.14%

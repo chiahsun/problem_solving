@@ -13,3 +13,11 @@ Memory Usage: 13.8 MB, less than 85.51% of Swift online submissions for Same Tre
 Runtime 60 ms Beats 36.39%
 
 Memory 14 MB Beats 29.69%
+
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 147.13 MB Beats 91.04%
+
+
