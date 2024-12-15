@@ -29,3 +29,18 @@ Your runtime beats 98.12 % of python3 submissions.
 Runtime 75 ms Beats 63.57%
 
 Memory 14.3 MB Beats 46.22%
+
+# solve1.dart
+
+Runtime 25 ms Beats 26.19%
+
+Memory 147.49 MB Beats 90.48%
+
+
+# solve2.dart
+
+Runtime 3 ms Beats 100.00%
+
+Memory 149.41 MB Beats 59.52%
+
+

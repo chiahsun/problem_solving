@@ -39,3 +39,9 @@ Memory Usage: 15.8 MB, less than 52.02% of Swift online submissions for Majority
 Runtime 273 ms Beats 72.44%
 
 Memory 15.5 MB Beats 86.29%
+
+# solve1.dart
+
+Runtime 1 ms Beats 88.79%
+
+Memory 155.68 MB Beats 29.44%

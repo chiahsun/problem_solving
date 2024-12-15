@@ -13,3 +13,9 @@ Test cases seems small to evaluate performance steadily.
 Runtime 42 ms Beats 82.1%
 
 Memory 13.8 MB Beats 98.94%
+
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 149.86 MB Beats 36.36%

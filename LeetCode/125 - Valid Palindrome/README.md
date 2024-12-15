@@ -23,3 +23,8 @@ Runtime: 100 ms
 
 Your runtime beats 37.55% of pythonsubmissions.
 
+#### solve1.dart
+
+Runtime 12 ms Beats 75.53%
+
+Memory 152.60 MB Beats 22.66%

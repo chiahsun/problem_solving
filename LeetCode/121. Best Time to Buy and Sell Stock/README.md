@@ -21,3 +21,15 @@ Memory Usage: 17.6 MB, less than 38.53% of Swift online submissions for Best Tim
 Runtime 2555 ms Beats 44.87%
 
 Memory 25.1 MB Beats 38.92%
+
+# solve1.dart
+
+Runtime 5 ms Beats 33.83%
+
+Memory 193.12 MB Beats 6.58%
+
+# solve2.dart
+
+Runtime 3 ms Beats 80.10%
+
+Memory 193.05 MB Beats 7.89%

@@ -59,5 +59,8 @@ Runtime: 88 ms, faster than 81.14% of Swift online submissions for Implement str
 Memory Usage: 15.9 MB, less than 5.14% of Swift online submissions for Implement strStr().
 
 
+# solve1.dart
 
+0 ms Beats 100.00%
 
+Memory 151.77 MB Beats 10.21%

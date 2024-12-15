@@ -2,8 +2,6 @@
 
 Use map
 
-126 / 126 test cases passed.
-Status: Accepted
 Runtime: 24 ms
 
 Your runtime beats 52.94 % of golang submissions.
@@ -12,8 +10,6 @@ Your runtime beats 52.94 % of golang submissions.
 
 Use array
 
-126 / 126 test cases passed.
-Status: Accepted
 Runtime: 8 ms
 
 Your runtime beats 100.00 % of golang submissions.
@@ -26,4 +22,17 @@ Your runtime beats 100.00 % of golang submissions.
 Runtime: 28 ms, faster than 91.35% of Swift online submissions for Ransom Note.
 
 Memory Usage: 14 MB, less than 97.12% of Swift online submissions for Ransom Note.
+
+
+# solve1.dart
+
+Runtime 43 ms Beats 29.33%
+
+Memory 150.28 MB Beats 48.15%
+
+# solve2.dart
+
+Runtime 6 ms Beats 96.00%
+
+Memory 150.22 MB Beats 48.15%
 

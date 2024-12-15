@@ -70,3 +70,10 @@ Sort + search from lo and hi.
 Runtime 66 ms Beats 90.59%
 
 Memory 14.8 MB Beats 99.68%
+
+# solve1.dart 
+
+Runtime 5 ms Beats 94.84%
+
+Memory 148.60 MB Beats 67.11%
+
