@@ -28,3 +28,9 @@ Runtime: 80 ms, faster than 83.81% of Swift online submissions for Valid Sudoku.
 
 Memory Usage: 14.2 MB, less than 84.62% of Swift online submissions for Valid Sudoku.
 
+# solve1.dart 
+
+Runtime 3 ms Beats 92.86%
+
+Memory 152.21 MB Beats 20.69%
+

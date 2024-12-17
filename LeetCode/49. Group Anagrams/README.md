@@ -15,3 +15,10 @@ Memory Usage: 15.9 MB, less than 80.43% of Swift online submissions for Group An
 Runtime 211 ms Beats 59.66%
 
 Memory 17.8 MB Beats 55.38%
+
+# solve1.dart
+
+Runtime 23 ms Beats 98.57%
+
+Memory 155.97 MB Beats 98.61%
+

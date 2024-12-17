@@ -29,3 +29,9 @@ Memory Usage: 15 MB, less than 14.32% of Swift online submissions for Merge Inte
 Runtime 363 ms Beats 38.72%
 
 Memory 18 MB Beats 86.1%
+
+# solve1.dart
+
+Runtime 25 ms Beats 75.68%
+
+Memory 158.60 MB Beats 48.78%
