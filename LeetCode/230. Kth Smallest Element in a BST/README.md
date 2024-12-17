@@ -25,3 +25,9 @@ Use stack
 Runtime 109 ms Beats 46.38%
 
 Memory 18 MB Beats 46.90%
+
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 153.48 MB Beats 10.00%

@@ -11,3 +11,10 @@ Find all those connected to the boundaries first.
 Runtime 139 ms Beats 94.68%
 
 Memory 16.4 MB Beats 23.92%
+
+# solve1.dart
+
+Runtime 1 ms Beats 100.00%
+
+Memory 157.08 MB Beats 100.00%
+

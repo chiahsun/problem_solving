@@ -23,3 +23,9 @@ Memory Usage: 17.2 MB, less than 21.25% of Swift online submissions for Number o
 Runtime 316 ms Beats 92.35%
 
 Memory 16.4 MB Beats 66.21%
+
+# solve1.dart
+
+Runtime 362 ms Beats 42.31%
+
+Memory 156.57 MB Beats 48.28%
