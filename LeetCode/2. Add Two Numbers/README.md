@@ -15,3 +15,10 @@ Memory Usage: 13.8 MB, less than 72.49% of Swift online submissions for Add Two 
 Runtime 71 ms Beats 91.32%
 
 Memory 13.7 MB Beats 99.33%
+
+# solve1.dart
+
+Runtime 22 ms Beats 21.32%
+
+Memory 148.38 MB Beats 93.56%
+
