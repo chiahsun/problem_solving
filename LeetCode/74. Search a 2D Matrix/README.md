@@ -28,3 +28,10 @@ Search from top-right corner and it can be searched in O(n+m)
 Runtime 47 ms Beats 92.58%
 
 Memory 14.4 MB Beats 43.68%
+
+# solve1.dart (2 binart search with different criterion)
+
+Runtime 0 ms Beats 100.00%
+
+Memory 152.50 MB Beats 34.78%
+

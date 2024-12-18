@@ -15,3 +15,15 @@ Memory Usage: 20.7 MB, less than 77.78% of Swift online submissions for Implemen
 Runtime 261 ms Beats 73.30%
 
 Memory 27.7 MB Beats 84.6%
+
+# solve1.dart
+
+Runtime 49 ms Beats 60.00%
+
+Memory 193.40 MB Beats 66.67%
+
+# solve2.dart
+
+Runtime 33 ms Beats 100.00%
+
+Memory 202.50 MB Beats 16.67%

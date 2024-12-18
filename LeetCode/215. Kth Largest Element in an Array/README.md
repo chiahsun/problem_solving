@@ -62,3 +62,15 @@ Quick select with 3-way partitioning.
 Runtime 2140 ms Beats 18.79%
 
 Memory 27.1 MB Beats 64.12%
+
+# solve1.dart (Sort)
+
+Runtime 99 ms Beats 62.07%
+
+Memory 171.62 MB Beats 55.17%
+
+# solve2.dart (Binary heap(Priority queue))
+
+Runtime 121 ms Beats 37.93%
+
+Memory 195.41 MB Beats 27.59%

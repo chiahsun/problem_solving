@@ -2,16 +2,12 @@
 
 Use single source shortest path
 
-61 / 61 test cases passed.
-Status: Accepted
 Runtime: 1312 ms
 
 # solve2.py
 
 Use DP
 
-61 / 61 test cases passed.
-Status: Accepted
 Runtime: 56 ms
 
 Your runtime beats 95.57 % of python3 submissions.
@@ -34,3 +30,8 @@ Runtime: 52 ms, faster than 99.25% of Swift online submissions for Minimum Path 
 
 Memory Usage: 14.6 MB, less than 22.56% of Swift online submissions for Minimum Path Sum.
 
+# solve1.dart
+
+Runtime 2 ms Beats 60.00%
+
+Memory 149.23 MB Beats 40.00%

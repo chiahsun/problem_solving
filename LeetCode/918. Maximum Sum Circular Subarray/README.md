@@ -31,3 +31,11 @@ Prefix and suffix sum
 Runtime 633 ms Beats 50.58%
 
 Memory 19.4 MB Beats 8.98%
+
+# solve1.dart
+
+Runtime 2 ms Beats 100.00%
+
+Memory 157.92 MB Beats 100.00%
+
+

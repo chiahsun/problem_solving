@@ -17,3 +17,10 @@ Memory 36.4 MB Beats 91.5%
 Runtime 2193 ms Beats 11.18%
 
 Memory 36.4 MB Beats 55.19%
+
+# solve1.dart (Divide by 2-pointers algo, then merge two sorted list)
+
+Runtime 11 ms Beats 94.74%
+
+Memory 170.45 MB Beats 17.39%
+
