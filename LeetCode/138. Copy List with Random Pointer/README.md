@@ -15,3 +15,15 @@ Memory Usage: 15.3 MB, less than 46.55% of Swift online submissions for Copy Lis
 Runtime 66 ms Beats 59.59%
 
 Memory 14.9 MB Beats 83.33%
+
+# solve1.go
+
+Runtime 3 ms Beats 57.97%
+
+Memory 5.28 MB Beats 67.28%
+
+# solve2.go
+
+Runtime 3 ms Beats 57.97%
+
+Memory 5.46 MB Beats 14.45%
