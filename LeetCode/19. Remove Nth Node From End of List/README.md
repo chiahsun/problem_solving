@@ -1,15 +1,11 @@
 # solve1.cc
 
-207 / 207 test cases passed.
-Status: Accepted
 Runtime: 4 ms
 
 Your runtime beats 21.25% of cppsubmissions.
 
 # solve1.py
 
-208 / 208 test cases passed.
-Status: Accepted
 Runtime: 44 ms
 
 Your runtime beats 95.56 % of python3 submissions.
@@ -32,3 +28,10 @@ Memory Usage: 13.8 MB, less than 80.20% of Swift online submissions for Remove N
 Runtime 54 ms Beats 71.64%
 
 Memory 14 MB Beats 21.61%
+
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 153.26 MB Beats 6.25%
+
