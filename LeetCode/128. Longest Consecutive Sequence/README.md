@@ -9,3 +9,10 @@ Memory Usage: 17.7 MB, less than 47.66% of Swift online submissions for Longest 
 Runtime: 268 ms, faster than 50.47% of Swift online submissions for Longest Consecutive Sequence.
 
 Memory Usage: 25.6 MB, less than 5.61% of Swift online submissions for Longest Consecutive Sequence.
+
+# solve1.dart
+
+Runtime 67 ms Beats 73.91%
+
+Memory 196.29 MB Beats 8.70%
+
