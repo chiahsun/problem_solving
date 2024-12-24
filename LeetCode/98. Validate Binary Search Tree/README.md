@@ -9,3 +9,11 @@ Memory Usage: 14.8 MB, less than 51.94% of Swift online submissions for Validate
 Runtime 102 ms Beats 23.31%
 
 Memory 17.1 MB Beats 13.57%
+
+# solve1.dart
+
+Runtime 1 ms Beats 90.48%
+
+Memory 149.97 MB Beats 52.38%
+
+

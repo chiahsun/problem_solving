@@ -21,3 +21,16 @@ Memory Usage: 14.1 MB, less than  48.77% of Swift online submissions for Combina
 Runtime 56 ms Beats 96.39%
 
 Memory 14 MB Beats 66.22%
+
+# solve1.dart
+
+Runtime 7 ms Beats 36.00%
+
+Memory 152.64 MB Beats 16.00%
+
+# solve2.dart
+
+Runtime 8 ms Beats 32.00%
+
+Memory 149.08 MB Beats 80.00%
+

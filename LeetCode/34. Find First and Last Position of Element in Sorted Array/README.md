@@ -9,3 +9,10 @@ Memory Usage: 15.4 MB, less than 18.60% of Swift online submissions for Find Fir
 Runtime 213 ms Beats 20.18%
 
 Memory 15.4 MB Beats 92.97%
+
+# solve1.dart (Using lower bound and upper bound)
+
+Runtime 0 ms Beats 100.00%
+
+Memory 148.70 MB Beats 90.38%
+

@@ -29,3 +29,10 @@ Memory 13.8 MB Beats 70.33%
 Runtime 54 ms Beats 94.68%
 
 Memory 13.9 MB Beats 70.33%
+
+# solve1.dart (Find common msb parts)
+
+Runtime 3 ms Beats 100.00%
+
+Memory 152.66 MB Beats 100.00%
+

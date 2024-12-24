@@ -13,3 +13,16 @@ Memory Usage: 14.2 MB, less than 70.87% of Swift online submissions for Binary T
 Runtime 68 ms Beats 47.19%
 
 Memory 14.3 MB Beats 25.49%
+
+# solve1.dart
+
+Runtime 11 ms Beats 9.38%
+
+Memory 150.39 MB Beats 37.50%
+
+# solve2.dart
+
+Runtime 2 ms Beats 87.50%
+
+Memory 152.81 MB Beats 6.25%
+
