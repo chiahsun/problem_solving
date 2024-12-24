@@ -25,3 +25,16 @@ Memory 13.8 MB Beats 90.11%
 Runtime 341 ms Beats 94.52%
 
 Memory 14 MB Beats 59.66%
+
+# solve1.dart
+
+Runtime 10 ms Beats 71.05%
+
+Memory 149.99 MB Beats 48.68%
+
+# solve2.dart
+
+Runtime 6 ms Beats 84.21%
+
+Memory 148.62 MB Beats 75.00%
+
