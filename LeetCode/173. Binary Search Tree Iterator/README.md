@@ -15,3 +15,16 @@ Memory 20.6 MB Beats 13.12%
 Runtime 147 ms Beats 61.81%
 
 Memory 20.2 MB Beats 70.35%
+
+# solve1.dart (Space: O(all nodes size))
+
+Runtime 3 ms Beats 100.00%
+
+Memory 160.02 MB Beats 50.00%
+
+# solve2.dart (Space: O(tree height))
+
+Runtime 2 ms Beats 100.00%
+
+Memory 160.18 MB Beats 50.00%
+

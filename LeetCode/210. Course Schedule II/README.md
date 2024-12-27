@@ -17,3 +17,17 @@ Memory Usage: 14.2 MB, less than 93.85% of Swift online submissions for Course S
 Runtime 124 ms Beats 80.97%
 
 Memory 17 MB Beats 45.12%
+
+# solve1.dart
+
+Runtime 7 ms Beats 50.00%
+
+Memory 152.24 MB Beats 100.00%
+
+# solve2.dart
+
+Runtime 4 ms Beats 100.00%
+
+Memory 151.03 MB Beats 100.00%
+
+

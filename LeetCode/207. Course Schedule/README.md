@@ -17,3 +17,11 @@ Your runtime beats 95.12 % of python3 submissions.
 Runtime: 72 ms, faster than 98.35% of Swift online submissions for Course Schedule.
 
 Memory Usage: 14.6 MB, less than 73.63% of Swift online submissions for Course Schedule.
+
+# solve1.dart
+
+Runtime 6 ms Beats 100.00%
+
+Memory 150.97 MB Beats 100.00%
+
+
