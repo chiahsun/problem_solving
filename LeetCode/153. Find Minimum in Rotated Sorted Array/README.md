@@ -9,3 +9,11 @@ Memory Usage: 14.2 MB, less than 49.78% of Swift online submissions for Find Min
 Runtime 46 ms Beats 88.59%
 
 Memory 14.2 MB Beats 23.58% 
+
+# solve1.dart
+
+Runtime 0 ms Beats 100.00%
+
+Memory 147.88 MB Beats 89.47%
+
+
