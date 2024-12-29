@@ -11,3 +11,10 @@ Memory Usage: 18.4 MB, less than 88.89% of Swift online submissions for Gas Stat
 Runtime 693 ms Beats 85.10%
 
 Memory 18.8 MB Beats 98.2%
+
+# sovle1.dart
+
+Runtime 2 ms Beats 100.00%
+
+Memory 193.88 MB Beats 26.32%
+
