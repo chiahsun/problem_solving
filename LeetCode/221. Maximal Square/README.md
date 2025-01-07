@@ -17,3 +17,9 @@ Runtime: 152 ms, faster than 100.00% of Swift online submissions for Maximal Squ
 
 Memory Usage: 14.8 MB, less than 88.76% of Swift online submissions for Maximal Square.
 
+# solve1.dart
+
+Runtime 26 ms Beats 50.00%
+
+Memory 174.04 MB Beats 100.00%
+
