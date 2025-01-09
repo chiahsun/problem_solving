@@ -11,3 +11,8 @@ Note that `+` operator would lead to errors.
 Runtime 351 ms
 
 Beats 97.52%
+
+# solve3.sql
+
+Runtime 347 ms Beats 98.60%
+
