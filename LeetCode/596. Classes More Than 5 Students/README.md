@@ -15,3 +15,7 @@ Beats 10.77%
 Runtime 337 ms
 
 Beats 71.47%
+
+# solve4.sql (`GROUP BY` + `HAVING`)
+
+Runtime 471 ms Beats 44.63%
