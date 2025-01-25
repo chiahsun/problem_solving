@@ -13,3 +13,12 @@ Start from output degrees 0 as safe nodes.
 Runtime 711 ms Beats 82.57%
 
 Memory 21.6 MB Beats 75.80%
+
+# solve1.dart
+
+TODO: Check other sols.
+
+Runtime 11 ms Beats -%
+
+Memory 173.95 MB Beats 100.00%
+
